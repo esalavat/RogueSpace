@@ -45,11 +45,11 @@ public class AsteroidSpawerScript : MonoBehaviour
         spawnSpeedAcceleration += .002f;
         float output = System.Math.Max(spawnSpeed + Random.Range(spawnRandomness*-1, spawnRandomness), minSpawnSpeed);
 
-        Debug.Log(
-            "spawnSpeed: " + spawnSpeed
-            + " spawnSpeedAcceleration: " + spawnSpeedAcceleration
-            + " nextSpawnTime: " + output
-        );
+        // Debug.Log(
+        //     "spawnSpeed: " + spawnSpeed
+        //     + " spawnSpeedAcceleration: " + spawnSpeedAcceleration
+        //     + " nextSpawnTime: " + output
+        // );
 
         return output;
     }
