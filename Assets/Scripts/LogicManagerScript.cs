@@ -12,7 +12,6 @@ public class LogicManagerScript : MonoBehaviour
     public int scoreDelay =  3;
     public GameObject gameOverScreen;
     public GameVars gameState;
-    
 
     void Start() {
         InvokeRepeating("addScore", scoreDelay, scoreDelay);
@@ -21,8 +20,8 @@ public class LogicManagerScript : MonoBehaviour
 
     [ContextMenu("addScore")]
     public void addScore() {
-        gameState.score += scoreIncrement;
-        scoreText.text = gameState.score.ToString();
+        score += scoreIncrement;
+        scoreText.text = score.ToString();
     }
 
     public void restartGame() {
@@ -31,6 +30,7 @@ public class LogicManagerScript : MonoBehaviour
 
     public void gameOver() {
         gameOverScreen.SetActive(true);
+        gameState.credits += score;
         CancelInvoke("addScore");
     }
 }

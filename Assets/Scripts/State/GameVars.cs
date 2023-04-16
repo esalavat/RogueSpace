@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "GameVars")]
 public class GameVars : ScriptableObject
 {
-    public int score;
+    public int credits;
 }
