@@ -865,6 +865,9 @@ MonoBehaviour:
   ship: {fileID: 867121256}
   logicManagerScript: {fileID: 0}
   isAlive: 1
+  shootSpeed: 1
+  laser: {fileID: 8335535562435554103, guid: 1779af82c9a8a4a4ba94d1eece02891c, type: 3}
+  laserSpeed: 10
 --- !u!60 &867121258
 PolygonCollider2D:
   m_ObjectHideFlags: 0

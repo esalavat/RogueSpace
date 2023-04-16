@@ -8,11 +8,15 @@ public class ShipScript : MonoBehaviour
     public Rigidbody2D ship;
     public LogicManagerScript logicManagerScript;
     public bool isAlive = true;
+    public float shootSpeed = 1f;
+    public GameObject laser;
+    public float laserSpeed = 20f;
 
     private Vector3 inputPosition;
     private Vector3 direction;
     private Vector3 minScreenBounds;
     private Vector3 maxScreenBounds;
+    private float shootTimer = 0;
 
     void Start()
     {
@@ -42,6 +46,13 @@ public class ShipScript : MonoBehaviour
 
             direction = (inputPosition - transform.position);
             ship.velocity = new Vector2(direction.x, direction.y) * moveSpeed;
+
+            if(shootTimer >= shootSpeed) {
+                shootLaser();
+                shootTimer -= shootSpeed;
+            } else {
+                shootTimer += Time.deltaTime;
+            }
         } else {
             ship.velocity = Vector2.zero;
         }
@@ -49,7 +60,16 @@ public class ShipScript : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        logicManagerScript.gameOver();
-        isAlive = false;
+        Debug.Log("ShipScript.OnCollisionEnter");
+        if(collision.gameObject.tag == "asteroid") {
+            logicManagerScript.gameOver();
+            isAlive = false;
+        }
+    }
+
+    private void shootLaser() {
+        GameObject newLaser = Instantiate(laser, new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
+        newLaser.GetComponent<Rigidbody2D>().velocity = Vector2.up * laserSpeed;
+        Destroy(newLaser, 2);
     }
 }
