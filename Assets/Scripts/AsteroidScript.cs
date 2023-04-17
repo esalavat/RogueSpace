@@ -8,6 +8,7 @@ public class AsteroidScript : MonoBehaviour
     public float deadZoneY = -10f;
     public float minSpin = -25;
     public float maxSpin = 25;
+    public int scoreValue = 1;
 
     private float spinSpeed;
 
@@ -28,6 +29,7 @@ public class AsteroidScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "laser") {
             Destroy(gameObject);
+            EventManager.OnEnemyDestroyed(scoreValue);
         }
     }
 }

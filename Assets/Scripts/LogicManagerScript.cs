@@ -12,13 +12,17 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject gameOverScreen;
     public GameVars gameState;
 
-    void Start() {
-        InvokeRepeating("addScore", scoreDelay, scoreDelay);
+    void OnEnable() {
+        EventManager.EnemyDestroyed += addScore;
     }
 
     [ContextMenu("addScore")]
     public void addScore() {
-        score += scoreIncrement;
+        addScore(scoreIncrement);
+    }
+
+    public void addScore(int amount) {
+        score += amount;
         EventManager.OnScoreUpdated(score);
     }
 
