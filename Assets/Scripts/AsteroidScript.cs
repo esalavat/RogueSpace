@@ -26,7 +26,6 @@ public class AsteroidScript : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collider) {
-        Debug.Log("AsteroidScript.OnCollisionEnter");
         if(collider.gameObject.tag == "laser") {
             Destroy(gameObject);
         }

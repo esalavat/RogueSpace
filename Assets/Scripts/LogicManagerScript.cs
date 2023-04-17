@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
@@ -17,11 +16,10 @@ public class LogicManagerScript : MonoBehaviour
         InvokeRepeating("addScore", scoreDelay, scoreDelay);
     }
 
-
     [ContextMenu("addScore")]
     public void addScore() {
         score += scoreIncrement;
-        scoreText.text = score.ToString();
+        EventManager.OnScoreUpdated(score);
     }
 
     public void restartGame() {

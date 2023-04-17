@@ -60,7 +60,6 @@ public class ShipScript : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        Debug.Log("ShipScript.OnCollisionEnter");
         if(collision.gameObject.tag == "asteroid") {
             logicManagerScript.gameOver();
             isAlive = false;
