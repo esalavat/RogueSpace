@@ -1021,7 +1021,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b80055eb4ff9d4388bd9f1ae2979ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 3
   ship: {fileID: 867121256}
   logicManagerScript: {fileID: 0}
   isAlive: 1
@@ -1195,8 +1195,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1200374153}
   - component: {fileID: 1200374152}
+  - component: {fileID: 1200374154}
   m_Layer: 0
-  m_Name: LogicManager
+  m_Name: CodeManager
   m_TagString: logic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1235,6 +1236,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1200374154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200374151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff9575bba3afa614490b03d704b6f9e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: {fileID: 11400000, guid: 1feca13c863c82c4c861cbbae2d5ffa6, type: 2}
 --- !u!1 &1223356144
 GameObject:
   m_ObjectHideFlags: 0

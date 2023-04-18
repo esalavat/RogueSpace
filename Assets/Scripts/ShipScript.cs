@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipScript : MonoBehaviour
 {
-    public float moveSpeed = 10f;
+    public float moveSpeed = 3f;
     public Rigidbody2D ship;
     public LogicManagerScript logicManagerScript;
     public bool isAlive = true;
@@ -20,6 +20,14 @@ public class ShipScript : MonoBehaviour
 
     void Start()
     {
+        if(GameStateManager.Instance.hasUpgrade(Upgrades.ShipSpeed)) {
+            moveSpeed *= 3;
+        }
+
+        if(GameStateManager.Instance.hasUpgrade(Upgrades.LaserSpeed)) {
+            shootSpeed /= 3;
+        }
+
         minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         logicManagerScript = GameObject.FindGameObjectWithTag("logic").GetComponent<LogicManagerScript>();
