@@ -6,4 +6,7 @@ public static class EventManager {
 
     public static event Action<int> EnemyDestroyed;
     public static void OnEnemyDestroyed(int score) => EnemyDestroyed?.Invoke(score);
+
+    public static event Action<int> CoinCollected;
+    public static void OnCoinCollected(int value) => CoinCollected?.Invoke(value);
 }

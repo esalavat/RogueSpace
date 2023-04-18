@@ -102,6 +102,9 @@ MonoBehaviour:
   deadZoneY: -10
   minSpin: -70
   maxSpin: 70
+  scoreValue: 1
+  coinChance: 0.6
+  coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
 --- !u!58 &333384348093917646
 CircleCollider2D:
   m_ObjectHideFlags: 0

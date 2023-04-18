@@ -98,10 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e47777c3e020449a081680c1e7e7b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
+  baseMoveSpeed: 2
+  moveSpeedVariation: 1
   deadZoneY: -10
-  minSpin: -70
-  maxSpin: 70
+  maxSpin: 180
+  scoreValue: 1
+  coinChance: 0.3
+  coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
 --- !u!58 &1628008589540593304
 CircleCollider2D:
   m_ObjectHideFlags: 0

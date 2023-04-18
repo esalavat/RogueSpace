@@ -26,14 +26,22 @@ public class UIManagerScript : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
+    private void CoinCollected(int value) {
+        gameState.credits += value;
+        creditsText.gameObject.SetActive(true);
+        creditsText.text = gameState.credits.ToString();
+    }
+
     private void OnEnable()
     {
         EventManager.ScoreUpdated += EventManagerOnScoreUpdated;
+        EventManager.CoinCollected += CoinCollected;
     }
 
     private void OnDisable()
     {
         EventManager.ScoreUpdated -= EventManagerOnScoreUpdated;
+        EventManager.CoinCollected -= CoinCollected;
     }
 
     public void UpdateCredits() {

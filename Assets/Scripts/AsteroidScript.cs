@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class AsteroidScript : MonoBehaviour
 {
-    public float moveSpeed = 2f;
+    public float baseMoveSpeed = 2f;
+    public float moveSpeedVariation = 1f;
     public float deadZoneY = -10f;
-    public float minSpin = -25;
     public float maxSpin = 25;
     public int scoreValue = 1;
+    public float coinChance = .33f;
+    public GameObject coin;
 
     private float spinSpeed;
+    private float moveSpeed;
 
     void Start() {
-        spinSpeed = Random.Range(minSpin, maxSpin);
+        moveSpeed = baseMoveSpeed + Random.Range(moveSpeedVariation * -1, moveSpeedVariation);
+        spinSpeed = Random.Range(maxSpin * -1, maxSpin);
     }
 
     void Update()
@@ -28,8 +32,18 @@ public class AsteroidScript : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "laser") {
+            float x = transform.position.x;
+            float y = transform.position.y;
             Destroy(gameObject);
+            SpawnCoin(x, y);
             EventManager.OnEnemyDestroyed(scoreValue);
+        }
+    }
+
+    void SpawnCoin(float x, float y) {
+        float rand = Random.value;
+        if(rand <= coinChance) {
+            Instantiate(coin, new Vector3(x, y, 0), Quaternion.identity);
         }
     }
 }
