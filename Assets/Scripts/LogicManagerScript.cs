@@ -31,8 +31,11 @@ public class LogicManagerScript : MonoBehaviour
     }
 
     public void gameOver() {
-        gameOverScreen.SetActive(true);
-        gameState.credits += score;
-        CancelInvoke("addScore");
+        if(!gameOverScreen.activeSelf) {
+            gameOverScreen.SetActive(true);
+            gameState.credits += score;
+            UIManagerScript.Instance.UpdateCredits();
+            CancelInvoke("addScore");
+        }
     }
 }
