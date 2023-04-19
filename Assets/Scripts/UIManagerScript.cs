@@ -1,17 +1,26 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManagerScript : MonoBehaviour
 {
     public TMP_Text scoreText;
-    public TMP_Text creditsText;
+    public TMP_Text[] creditsTexts;
+    public TMP_Text messageText;
+    public GameObject messageContainer;
 
     public GameVars gameState;
+
+    public GameObject laserUpgradeUI;
+    public GameObject shipSpeedUpgradeUI;
+    public GameObject shieldUpgradeUI;
+
 
     public static UIManagerScript Instance { get; private set; }
 
     private void Start(){
         UpdateCredits();
+        UpdateUpgrades();
     }
     private void Awake() 
     { 
@@ -28,26 +37,86 @@ public class UIManagerScript : MonoBehaviour
 
     private void CoinCollected(int value) {
         gameState.credits += value;
-        creditsText.gameObject.SetActive(true);
-        creditsText.text = gameState.credits.ToString();
+        UpdateCredits();
     }
 
     private void OnEnable()
     {
-        EventManager.ScoreUpdated += EventManagerOnScoreUpdated;
-        EventManager.CoinCollected += CoinCollected;
+        EventManager.OnScoreUpdated += EventManagerOnScoreUpdated;
+        EventManager.OnCoinCollected += CoinCollected;
+        EventManager.OnCreditsUpdated += UpdateCredits;
+        EventManager.OnMessage += DisplayMessage;
     }
 
     private void OnDisable()
     {
-        EventManager.ScoreUpdated -= EventManagerOnScoreUpdated;
-        EventManager.CoinCollected -= CoinCollected;
+        EventManager.OnScoreUpdated -= EventManagerOnScoreUpdated;
+        EventManager.OnCoinCollected -= CoinCollected;
+        EventManager.OnCreditsUpdated -= UpdateCredits;
+        EventManager.OnMessage -= DisplayMessage;
     }
 
+    public void UpdateCredits(int credits) {
+        UpdateCredits();
+    }
     public void UpdateCredits() {
         if(gameState.credits > 0) {
-            creditsText.gameObject.SetActive(true);
-            creditsText.text = gameState.credits.ToString();
+            foreach(var creditsText in creditsTexts) {
+                creditsText.gameObject.SetActive(true);
+                creditsText.text = gameState.credits.ToString();
+            }
+        }
+    }
+
+    public void PurchaseLaserUpgrade() {
+        if(GameStateManager.Instance.getGameState().credits >= 50) {
+            PurchaseUpgrade(Upgrades.LaserSpeed, 50);
+        } else {
+            EventManager.Message("Not enough credits!");
+        }
+    }
+    public void PurchaseShipSpeedUpgrade() {
+        if(GameStateManager.Instance.getGameState().credits >= 100) {
+            PurchaseUpgrade(Upgrades.ShipSpeed, 100);
+        } else {
+            EventManager.Message("Not enough credits!");
+        }
+    }
+
+    public void PurchaseShieldUpgrade() {
+        if(GameStateManager.Instance.getGameState().credits >= 150) {
+            PurchaseUpgrade(Upgrades.Shield, 150);
+        } else {
+            EventManager.Message("Not enough credits!");
+        }
+    }
+    private void PurchaseUpgrade(Upgrades upgrade, int cost) {
+        GameStateManager.Instance.addUpgrade(upgrade);
+        GameStateManager.Instance.addCredits(cost * -1);
+        UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
+    }
+
+    private void DisplayMessage(string message) { 
+        messageText.text = message;
+        messageContainer.SetActive(true);
+        Invoke("HideMessage", 2);
+    }
+
+    private void HideMessage() {
+        messageContainer.SetActive(false);
+    }
+
+    private void UpdateUpgrades() {
+        if(GameStateManager.Instance.hasUpgrade(Upgrades.LaserSpeed)) {
+            laserUpgradeUI.GetComponent<Button>().interactable = false;
+        }
+
+        if(GameStateManager.Instance.hasUpgrade(Upgrades.ShipSpeed)) {
+            shipSpeedUpgradeUI.GetComponent<Button>().interactable = false;
+        }
+
+        if(GameStateManager.Instance.hasUpgrade(Upgrades.Shield)) {
+            shieldUpgradeUI.GetComponent<Button>().interactable = false;
         }
     }
 }

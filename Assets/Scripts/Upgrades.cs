@@ -1,3 +1,3 @@
 public enum Upgrades {
-    LaserSpeed, ShipSpeed, TwoLaser, Torpedo
+    LaserSpeed, ShipSpeed, Shield, TwoLaser, Torpedo
 }

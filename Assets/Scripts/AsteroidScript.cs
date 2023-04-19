@@ -36,7 +36,7 @@ public class AsteroidScript : MonoBehaviour
             float y = transform.position.y;
             Destroy(gameObject);
             SpawnCoin(x, y);
-            EventManager.OnEnemyDestroyed(scoreValue);
+            EventManager.EnemyDestroyed(scoreValue);
         }
     }
 

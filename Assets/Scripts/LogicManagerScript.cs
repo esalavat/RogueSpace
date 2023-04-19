@@ -13,7 +13,7 @@ public class LogicManagerScript : MonoBehaviour
     public GameVars gameState;
 
     void OnEnable() {
-        EventManager.EnemyDestroyed += addScore;
+        EventManager.OnEnemyDestroyed += addScore;
     }
 
     [ContextMenu("addScore")]
@@ -23,7 +23,7 @@ public class LogicManagerScript : MonoBehaviour
 
     public void addScore(int amount) {
         score += amount;
-        EventManager.OnScoreUpdated(score);
+        EventManager.ScoreUpdated(score);
     }
 
     public void restartGame() {

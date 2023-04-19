@@ -8,6 +8,7 @@ TagManager:
   - asteroid
   - laser
   - ship
+  - credits
   layers:
   - Default
   - TransparentFX

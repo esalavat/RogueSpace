@@ -19,10 +19,19 @@ public class GameStateManager : MonoBehaviour
     }
 
     public bool hasUpgrade(Upgrades upgrade) {
-        if(Array.IndexOf(gameState.purchasedUpgrades, upgrade) >= 0) {
+        if(gameState.purchasedUpgrades.Contains(upgrade)) {
             return true;
         }
 
         return false;
+    }
+
+    public void addUpgrade(Upgrades upgrade) {
+        gameState.purchasedUpgrades.Add(upgrade);
+    }
+
+    public void addCredits(int value) {
+        gameState.credits += value;
+        EventManager.CreditsUpdated(gameState.credits);
     }
 }

@@ -17,15 +17,21 @@ public class ShipScript : MonoBehaviour
     private Vector3 minScreenBounds;
     private Vector3 maxScreenBounds;
     private float shootTimer = 0;
+    private int life = 1;
 
     void Start()
-    {
+    {    
         if(GameStateManager.Instance.hasUpgrade(Upgrades.ShipSpeed)) {
             moveSpeed *= 3;
         }
 
         if(GameStateManager.Instance.hasUpgrade(Upgrades.LaserSpeed)) {
             shootSpeed /= 3;
+        }
+     
+        life = 1;
+        if(GameStateManager.Instance.hasUpgrade(Upgrades.Shield)) {
+            life += 1;
         }
 
         minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
@@ -67,10 +73,15 @@ public class ShipScript : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "asteroid") {
-            logicManagerScript.gameOver();
-            isAlive = false;
+            if(life > 1) {
+                life -= 1;
+                Destroy(collision.gameObject);
+            } else {
+                logicManagerScript.gameOver();
+                isAlive = false;
+            }
         }
     }
 

@@ -20,7 +20,7 @@ public class CoinScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider) {
         if(collider.gameObject.tag == "ship") {
             Destroy(gameObject);
-            EventManager.OnCoinCollected(value);
+            EventManager.CoinCollected(value);
         }
     }
 }
