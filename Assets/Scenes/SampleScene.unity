@@ -2631,7 +2631,7 @@ GameObject:
   - component: {fileID: 1651246503}
   - component: {fileID: 1651246502}
   m_Layer: 0
-  m_Name: AsteroidSpawner
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2653,6 +2653,8 @@ MonoBehaviour:
   - {fileID: 1486744008029192628, guid: 82d5a16d9d5947742bc1d9fd457e0dac, type: 3}
   - {fileID: 6683499425156478647, guid: 8d436060ef28c0a43bcc658297502a8e, type: 3}
   - {fileID: 4010690661086939465, guid: fddac0d2a6781a641a4d0679e6daec55, type: 3}
+  enemies:
+  - {fileID: 331745898272797011, guid: acb61ca9fc6d7a84d98bc91fd30f20c9, type: 3}
   horizontalOffset: 2.5
   spawnSpeed: 2
   minSpawnSpeed: 0.5
