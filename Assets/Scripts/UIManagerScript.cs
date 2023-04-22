@@ -69,15 +69,8 @@ public class UIManagerScript : MonoBehaviour
     }
 
     public void PurchaseLaserUpgrade() {
-        if(GameStateManager.Instance.getGameState().credits >= 50) {
-            PurchaseUpgrade(Upgrades.LaserSpeed, 50);
-        } else {
-            EventManager.Message("Not enough credits!");
-        }
-    }
-    public void PurchaseShipSpeedUpgrade() {
         if(GameStateManager.Instance.getGameState().credits >= 100) {
-            PurchaseUpgrade(Upgrades.ShipSpeed, 100);
+            PurchaseUpgrade(Upgrades.LaserSpeed, 100);
         } else {
             EventManager.Message("Not enough credits!");
         }
@@ -109,10 +102,6 @@ public class UIManagerScript : MonoBehaviour
     private void UpdateUpgrades() {
         if(GameStateManager.Instance.hasUpgrade(Upgrades.LaserSpeed)) {
             laserUpgradeUI.GetComponent<Button>().interactable = false;
-        }
-
-        if(GameStateManager.Instance.hasUpgrade(Upgrades.ShipSpeed)) {
-            shipSpeedUpgradeUI.GetComponent<Button>().interactable = false;
         }
 
         if(GameStateManager.Instance.hasUpgrade(Upgrades.Shield)) {

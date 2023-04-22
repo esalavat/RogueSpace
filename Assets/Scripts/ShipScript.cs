@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShipScript : MonoBehaviour
 {
-    public float moveSpeed = 3f;
+    public float moveSpeed = 10f;
     public Rigidbody2D ship;
     public LogicManagerScript logicManagerScript;
     public bool isAlive = true;
@@ -21,10 +21,6 @@ public class ShipScript : MonoBehaviour
 
     void Start()
     {    
-        if(GameStateManager.Instance.hasUpgrade(Upgrades.ShipSpeed)) {
-            moveSpeed *= 3;
-        }
-
         if(GameStateManager.Instance.hasUpgrade(Upgrades.LaserSpeed)) {
             shootSpeed /= 3;
         }

@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 331745898272797014}
   - component: {fileID: 331745898272797009}
-  - component: {fileID: 331745898272797008}
   - component: {fileID: 2259275598800476790}
+  - component: {fileID: 2702084289953433044}
+  - component: {fileID: 3447479319621801342}
   m_Layer: 0
   m_Name: EnemyShip1
   m_TagString: asteroid
@@ -86,24 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &331745898272797008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 331745898272797011}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ae3c833fa76bc7499967986536e0ee8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yMoveSpeed: 2
-  xScale: 8
-  xMoveSpeed: 5
-  scoreValue: 1
-  coinChance: 0.5
-  coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
 --- !u!61 &2259275598800476790
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,3 +113,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.292302, y: 0.3235472}
   m_EdgeRadius: 0
+--- !u!114 &2702084289953433044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331745898272797011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a329755dacdc848b089bdf601440cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 1
+  coinChance: 0.5
+  coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
+--- !u!114 &3447479319621801342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331745898272797011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371424b11a1d9944f88ce36e8a78577c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yMoveSpeed: 2
+  xScale: 8
+  xMoveSpeed: 5
+  deadZoneY: -10

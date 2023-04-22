@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4010690661086939467}
   - component: {fileID: 4010690661086939466}
   - component: {fileID: 4836440798787308731}
+  - component: {fileID: 691509017250566815}
   m_Layer: 0
   m_Name: Asteroid3
   m_TagString: asteroid
@@ -102,9 +103,6 @@ MonoBehaviour:
   moveSpeedVariation: 1
   deadZoneY: -10
   maxSpin: 70
-  scoreValue: 1
-  coinChance: 0.5
-  coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
 --- !u!60 &4836440798787308731
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -141,3 +139,18 @@ PolygonCollider2D:
       - {x: 0.12730323, y: 0.03418543}
       - {x: 0.12730324, y: 0.040070243}
       - {x: -0.011067703, y: 0.13865164}
+--- !u!114 &691509017250566815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010690661086939465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24a329755dacdc848b089bdf601440cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoreValue: 1
+  coinChance: 0.4
+  coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
