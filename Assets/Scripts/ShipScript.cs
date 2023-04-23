@@ -70,7 +70,7 @@ public class ShipScript : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.tag == "asteroid") {
+        if(collision.gameObject.tag == "asteroid" || collision.gameObject.tag == "enemyLaser") {
             if(life > 1) {
                 life -= 1;
                 Destroy(collision.gameObject);

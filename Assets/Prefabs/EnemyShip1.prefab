@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2259275598800476790}
   - component: {fileID: 2702084289953433044}
   - component: {fileID: 3447479319621801342}
+  - component: {fileID: 4179653527113958622}
   m_Layer: 0
   m_Name: EnemyShip1
   m_TagString: asteroid
@@ -144,3 +145,18 @@ MonoBehaviour:
   xScale: 8
   xMoveSpeed: 5
   deadZoneY: -10
+--- !u!114 &4179653527113958622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331745898272797011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1c38378585e9de44a3bd670b2486b16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 12
+  delay: 1
+  laser: {fileID: 4655763631912970988, guid: 900a7db036366f243b8afad60e685e68, type: 3}

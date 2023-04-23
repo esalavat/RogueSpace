@@ -9,6 +9,7 @@ TagManager:
   - laser
   - ship
   - credits
+  - enemyLaser
   layers:
   - Default
   - TransparentFX

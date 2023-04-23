@@ -12,9 +12,7 @@ public class UIManagerScript : MonoBehaviour
     public GameVars gameState;
 
     public GameObject laserUpgradeUI;
-    public GameObject shipSpeedUpgradeUI;
     public GameObject shieldUpgradeUI;
-
 
     public static UIManagerScript Instance { get; private set; }
 

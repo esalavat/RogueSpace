@@ -67,11 +67,17 @@ public class AsteroidSpawerScript : MonoBehaviour
             enemiesLength--;
         }
 
+        bool enemiesShoot = false;
+        if(timer > 80) {
+            enemiesShoot = true;
+        }
+
         int randomIndex = Random.Range(0, enemiesLength);
         float leftestPoint = transform.position.x - horizontalOffset;
         float rightestPoint = transform.position.x + horizontalOffset;
 
-        Instantiate(enemies[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
+        GameObject newEnemy = Instantiate(enemies[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
+        newEnemy.GetComponent<EnemyLaser>().enabled = enemiesShoot;
     }
 
     private float getNextEnemySpawnTime() {
