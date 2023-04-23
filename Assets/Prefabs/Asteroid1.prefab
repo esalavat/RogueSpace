@@ -134,3 +134,5 @@ MonoBehaviour:
   scoreValue: 1
   coinChance: 0.6
   coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
+  explosion: {fileID: 4361271454986989480, guid: 11e180321d7cce944b2ce70f536836d8,
+    type: 3}

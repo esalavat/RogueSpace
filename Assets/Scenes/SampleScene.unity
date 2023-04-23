@@ -4232,7 +4232,6 @@ MonoBehaviour:
   messageContainer: {fileID: 846838550}
   gameState: {fileID: 11400000, guid: 1feca13c863c82c4c861cbbae2d5ffa6, type: 2}
   laserUpgradeUI: {fileID: 7859139728202077228}
-  shipSpeedUpgradeUI: {fileID: 0}
   shieldUpgradeUI: {fileID: 99617756}
 --- !u!4 &2088559927
 Transform:

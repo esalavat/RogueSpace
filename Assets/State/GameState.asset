@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c94537fe7196f14daad64dd2e46c615, type: 3}
   m_Name: GameState
   m_EditorClassIdentifier: 
-  credits: 175
+  credits: 200
   purchasedUpgrades: 
