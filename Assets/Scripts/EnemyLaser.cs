@@ -7,7 +7,7 @@ public class EnemyLaser : MonoBehaviour
     public float speed = 12f;
     public float delay = 1f;
     public GameObject laser;
-    public bool enabled = false;
+    public bool laserEnabled = false;
     private float timer = 0;
     private List<GameObject> lasers = new List<GameObject>();
 

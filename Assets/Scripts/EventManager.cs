@@ -15,4 +15,7 @@ public static class EventManager {
 
     public static event Action<string> OnMessage;
     public static void Message(string message) => OnMessage?.Invoke(message);
+
+    public static event Action<int> OnLifeUpdated;
+    public static void LifeUpdated(int life) => OnLifeUpdated?.Invoke(life);
 }

@@ -8,7 +8,7 @@ public class UIManagerScript : MonoBehaviour
     public TMP_Text[] creditsTexts;
     public TMP_Text messageText;
     public GameObject messageContainer;
-
+    public GameObject shieldUI;
     public GameVars gameState;
 
     public GameObject laserUpgradeUI;
@@ -44,6 +44,7 @@ public class UIManagerScript : MonoBehaviour
         EventManager.OnCoinCollected += CoinCollected;
         EventManager.OnCreditsUpdated += UpdateCredits;
         EventManager.OnMessage += DisplayMessage;
+        EventManager.OnLifeUpdated += UpdateShield;
     }
 
     private void OnDisable()
@@ -52,6 +53,7 @@ public class UIManagerScript : MonoBehaviour
         EventManager.OnCoinCollected -= CoinCollected;
         EventManager.OnCreditsUpdated -= UpdateCredits;
         EventManager.OnMessage -= DisplayMessage;
+        EventManager.OnLifeUpdated -= UpdateShield;
     }
 
     public void UpdateCredits(int credits) {
@@ -105,5 +107,15 @@ public class UIManagerScript : MonoBehaviour
         if(GameStateManager.Instance.hasUpgrade(Upgrades.Shield)) {
             shieldUpgradeUI.GetComponent<Button>().interactable = false;
         }
+    }
+
+    private void UpdateShield(int life) {
+        if(life > 1) {
+            shieldUI.SetActive(true);
+            shieldUI.transform.Find("ShieldAmount").gameObject.GetComponent<TMP_Text>().text = life-1 + "X";
+        } else {
+            shieldUI.SetActive(false);
+        }
+        
     }
 }

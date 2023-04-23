@@ -77,7 +77,7 @@ public class AsteroidSpawerScript : MonoBehaviour
         float rightestPoint = transform.position.x + horizontalOffset;
 
         GameObject newEnemy = Instantiate(enemies[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
-        newEnemy.GetComponent<EnemyLaser>().enabled = enemiesShoot;
+        newEnemy.GetComponent<EnemyLaser>().laserEnabled = enemiesShoot;
     }
 
     private float getNextEnemySpawnTime() {

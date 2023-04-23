@@ -17,7 +17,7 @@ public class ShipScript : MonoBehaviour
     private Vector3 minScreenBounds;
     private Vector3 maxScreenBounds;
     private float shootTimer = 0;
-    private int life = 1;
+    public int life = 1;
 
     void Start()
     {    
@@ -29,6 +29,7 @@ public class ShipScript : MonoBehaviour
         if(GameStateManager.Instance.hasUpgrade(Upgrades.Shield)) {
             life += 1;
         }
+        EventManager.LifeUpdated(life);
 
         minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
@@ -73,6 +74,7 @@ public class ShipScript : MonoBehaviour
         if(collision.gameObject.tag == "asteroid" || collision.gameObject.tag == "enemyLaser") {
             if(life > 1) {
                 life -= 1;
+                EventManager.LifeUpdated(life);
                 Destroy(collision.gameObject);
             } else {
                 logicManagerScript.gameOver();
