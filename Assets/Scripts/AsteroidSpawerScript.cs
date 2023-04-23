@@ -62,7 +62,12 @@ public class AsteroidSpawerScript : MonoBehaviour
     }
 
     private void spawnEnemy() {
-        int randomIndex = Random.Range(0, enemies.Length);
+        int enemiesLength = enemies.Length;
+        if(timer < 40) {
+            enemiesLength--;
+        }
+
+        int randomIndex = Random.Range(0, enemiesLength);
         float leftestPoint = transform.position.x - horizontalOffset;
         float rightestPoint = transform.position.x + horizontalOffset;
 

@@ -2488,6 +2488,7 @@ MonoBehaviour:
   - {fileID: 4010690661086939465, guid: fddac0d2a6781a641a4d0679e6daec55, type: 3}
   enemies:
   - {fileID: 331745898272797011, guid: acb61ca9fc6d7a84d98bc91fd30f20c9, type: 3}
+  - {fileID: 7640462319457295093, guid: 5b6d916f87390304db93554dee600f36, type: 3}
   horizontalOffset: 2.5
   spawnSpeed: 2
   minSpawnSpeed: 0.5
