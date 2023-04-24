@@ -11,6 +11,7 @@ public class ShipScript : MonoBehaviour
     public float shootSpeed = 1f;
     public GameObject laser;
     public float laserSpeed = 20f;
+    public GameObject loseShieldParticle;
 
     private Vector3 inputPosition;
     private Vector3 direction;
@@ -73,8 +74,7 @@ public class ShipScript : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "asteroid" || collision.gameObject.tag == "enemyLaser") {
             if(life > 1) {
-                life -= 1;
-                EventManager.LifeUpdated(life);
+                decrementShield();
                 Destroy(collision.gameObject);
             } else {
                 logicManagerScript.gameOver();
@@ -87,5 +87,13 @@ public class ShipScript : MonoBehaviour
         GameObject newLaser = Instantiate(laser, new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
         newLaser.GetComponent<Rigidbody2D>().velocity = Vector2.up * laserSpeed;
         Destroy(newLaser, 2);
+    }
+
+    private void decrementShield() {
+        life -= 1;
+        EventManager.LifeUpdated(life);
+        GameObject loseShield = Instantiate(loseShieldParticle, new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
+        loseShield.transform.parent = transform;
+        Destroy(loseShield, 1);
     }
 }

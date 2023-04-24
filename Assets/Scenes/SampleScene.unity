@@ -1441,6 +1441,8 @@ MonoBehaviour:
   shootSpeed: 1
   laser: {fileID: 8335535562435554103, guid: 1779af82c9a8a4a4ba94d1eece02891c, type: 3}
   laserSpeed: 20
+  loseShieldParticle: {fileID: 6737425559070689856, guid: 4639fe3b8975a1047a0a920842067561,
+    type: 3}
   life: 1
 --- !u!60 &867121258
 PolygonCollider2D:
