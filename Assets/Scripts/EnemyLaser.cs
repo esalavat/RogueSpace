@@ -13,7 +13,7 @@ public class EnemyLaser : MonoBehaviour
 
     void Update()
     {
-        if(enabled && timer >= delay) {
+        if(laserEnabled && timer >= delay) {
             Debug.Log("enemy laser");
             timer -= delay;
             GameObject newLaser = Instantiate(laser, new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
