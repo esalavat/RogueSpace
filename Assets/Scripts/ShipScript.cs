@@ -12,13 +12,17 @@ public class ShipScript : MonoBehaviour
     public GameObject laser;
     public float laserSpeed = 20f;
     public GameObject loseShieldParticle;
+    public CameraShake cameraShake;
+    public GameObject explosionPrefab;
+
+    public int life = 1;
+
 
     private Vector3 inputPosition;
     private Vector3 direction;
     private Vector3 minScreenBounds;
     private Vector3 maxScreenBounds;
     private float shootTimer = 0;
-    public int life = 1;
 
     void Start()
     {    
@@ -73,14 +77,20 @@ public class ShipScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "asteroid" || collision.gameObject.tag == "enemyLaser") {
+            doCameraShake();
             if(life > 1) {
                 decrementShield();
                 Destroy(collision.gameObject);
             } else {
-                logicManagerScript.gameOver();
+                Invoke("triggerGameOver", 1f);
+                destroyShip();
                 isAlive = false;
             }
         }
+    }
+
+    private void triggerGameOver() {
+        logicManagerScript.gameOver();
     }
 
     private void shootLaser() {
@@ -95,5 +105,17 @@ public class ShipScript : MonoBehaviour
         GameObject loseShield = Instantiate(loseShieldParticle, new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
         loseShield.transform.parent = transform;
         Destroy(loseShield, 1);
+    }
+
+    private void destroyShip() {
+        if(explosionPrefab != null) {
+            GameObject newExplosion = Instantiate(explosionPrefab, new Vector3(transform.position.x, transform.position.y, 0), Quaternion.identity);
+            Destroy(newExplosion, 2);
+        }
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+    }
+
+    private void doCameraShake() {
+        StartCoroutine(cameraShake.Shake(.2f, .10f));
     }
 }
