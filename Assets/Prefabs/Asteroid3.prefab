@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4010690661086939465}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.016353786, y: 3.1065578, z: 0.035652615}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -120,7 +120,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.36, y: 0.36}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.36, y: 0.36}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -128,17 +128,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.08574435, y: 0.14028071}
-      - {x: -0.1686516, y: 0.16581456}
-      - {x: -0.13744357, y: 0.03574442}
-      - {x: -0.056025036, y: -0.1146767}
-      - {x: -0.033187933, y: -0.16865155}
-      - {x: -0.031208038, y: -0.16439597}
-      - {x: -0.029298313, y: -0.16702251}
-      - {x: 0.043928128, y: -0.107997954}
-      - {x: 0.12730323, y: 0.03418543}
-      - {x: 0.12730324, y: 0.040070243}
-      - {x: -0.011067703, y: 0.13865164}
+    - - {x: 0.37223792, y: 0.0895354}
+      - {x: -0.07336123, y: 0.36380243}
+      - {x: -0.45619127, y: 0.44851735}
+      - {x: -0.40220279, y: 0.1129833}
+      - {x: -0.0774253, y: -0.4685908}
 --- !u!114 &691509017250566815
 MonoBehaviour:
   m_ObjectHideFlags: 0
