@@ -6,5 +6,5 @@ using UnityEngine;
 public class GameVars : ScriptableObject
 {
     public int credits;
-    public List<Upgrades> purchasedUpgrades;
+    public List<Upgrade> purchasedUpgrades;
 }

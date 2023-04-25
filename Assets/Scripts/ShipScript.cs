@@ -26,12 +26,12 @@ public class ShipScript : MonoBehaviour
 
     void Start()
     {    
-        if(GameStateManager.Instance.hasUpgrade(Upgrades.LaserSpeed)) {
+        if(GameStateManager.Instance.hasUpgrade(Upgrade.LaserSpeed1)) {
             shootSpeed /= 3;
         }
      
         life = 1;
-        if(GameStateManager.Instance.hasUpgrade(Upgrades.Shield)) {
+        if(GameStateManager.Instance.hasUpgrade(Upgrade.Shield1)) {
             life += 1;
         }
         EventManager.LifeUpdated(life);

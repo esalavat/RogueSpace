@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,16 +10,15 @@ public class UIManagerScript : MonoBehaviour
     public TMP_Text messageText;
     public GameObject messageContainer;
     public GameObject shieldUI;
-    public GameVars gameState;
-
-    public GameObject laserUpgradeUI;
-    public GameObject shieldUpgradeUI;
+    public GameObject upgradeUIPrefab;
+    public GameObject upgradeGroup;
+    private Dictionary<Upgrade, GameObject> upgradeUIs = new Dictionary<Upgrade, GameObject>();
 
     public static UIManagerScript Instance { get; private set; }
 
     private void Start(){
         UpdateCredits();
-        UpdateUpgrades();
+        LoadUpgrades();
     }
     private void Awake() 
     { 
@@ -34,7 +34,7 @@ public class UIManagerScript : MonoBehaviour
     }
 
     private void CoinCollected(int value) {
-        gameState.credits += value;
+        GameStateManager.Instance.gameState.credits += value;
         UpdateCredits();
     }
 
@@ -60,17 +60,17 @@ public class UIManagerScript : MonoBehaviour
         UpdateCredits();
     }
     public void UpdateCredits() {
-        if(gameState.credits > 0) {
+        if(GameStateManager.Instance.gameState.credits > 0) {
             foreach(var creditsText in creditsTexts) {
                 creditsText.gameObject.SetActive(true);
-                creditsText.text = gameState.credits.ToString();
+                creditsText.text = GameStateManager.Instance.gameState.credits.ToString();
             }
         }
     }
 
     public void PurchaseLaserUpgrade() {
         if(GameStateManager.Instance.getGameState().credits >= 100) {
-            PurchaseUpgrade(Upgrades.LaserSpeed, 100);
+            PurchaseUpgrade(Upgrade.LaserSpeed1);
         } else {
             EventManager.Message("Not enough credits!");
         }
@@ -78,14 +78,14 @@ public class UIManagerScript : MonoBehaviour
 
     public void PurchaseShieldUpgrade() {
         if(GameStateManager.Instance.getGameState().credits >= 150) {
-            PurchaseUpgrade(Upgrades.Shield, 150);
+            PurchaseUpgrade(Upgrade.Shield1);
         } else {
             EventManager.Message("Not enough credits!");
         }
     }
-    private void PurchaseUpgrade(Upgrades upgrade, int cost) {
+    private void PurchaseUpgrade(Upgrade upgrade) {
         GameStateManager.Instance.addUpgrade(upgrade);
-        GameStateManager.Instance.addCredits(cost * -1);
+        GameStateManager.Instance.addCredits(upgrade.cost * -1);
         UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
     }
 
@@ -99,13 +99,25 @@ public class UIManagerScript : MonoBehaviour
         messageContainer.SetActive(false);
     }
 
-    private void UpdateUpgrades() {
-        if(GameStateManager.Instance.hasUpgrade(Upgrades.LaserSpeed)) {
-            laserUpgradeUI.GetComponent<Button>().interactable = false;
+    private void LoadUpgrades() {
+        foreach(var upgrade in Upgrade.Values)
+        {
+            GameObject uiElement = Instantiate(upgradeUIPrefab, upgradeGroup.transform, false);
+            uiElement.transform.Find("DisplayName").gameObject.GetComponent<TMP_Text>().text = upgrade.displayName;
+            uiElement.transform.Find("Cost").gameObject.GetComponent<TMP_Text>().text = upgrade.cost.ToString();
+            Sprite sprite = Resources.Load<Sprite>(upgrade.imagePath);
+            var imageElement = uiElement.transform.Find("UpgradeImg");
+            imageElement.gameObject.GetComponent<UnityEngine.UI.Image>().sprite = sprite;
+            imageElement.GetComponent<RectTransform>().sizeDelta = new Vector2(upgrade.imageWidth, upgrade.imageHeight);
+            uiElement.GetComponent<Button>().onClick.AddListener(() => PurchaseUpgrade(upgrade));
+            upgradeUIs.Add(upgrade, uiElement);
         }
+        UpdateUpgrades();
+    }
 
-        if(GameStateManager.Instance.hasUpgrade(Upgrades.Shield)) {
-            shieldUpgradeUI.GetComponent<Button>().interactable = false;
+    private void UpdateUpgrades() {
+        foreach(Upgrade upgrade in GameStateManager.Instance.gameState.purchasedUpgrades) {
+            getUpgradeUI(upgrade).GetComponent<Button>().interactable = false;
         }
     }
 
@@ -117,5 +129,9 @@ public class UIManagerScript : MonoBehaviour
             shieldUI.SetActive(false);
         }
         
+    }
+
+    private GameObject getUpgradeUI(Upgrade upgrade) {
+        return upgradeUIs[upgrade];
     }
 }

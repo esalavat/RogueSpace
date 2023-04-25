@@ -18,15 +18,11 @@ public class GameStateManager : MonoBehaviour
         return gameState;
     }
 
-    public bool hasUpgrade(Upgrades upgrade) {
-        if(gameState.purchasedUpgrades.Contains(upgrade)) {
-            return true;
-        }
-
-        return false;
+    public bool hasUpgrade(Upgrade upgrade) {
+        return gameState.purchasedUpgrades.Contains(upgrade);
     }
 
-    public void addUpgrade(Upgrades upgrade) {
+    public void addUpgrade(Upgrade upgrade) {
         gameState.purchasedUpgrades.Add(upgrade);
     }
 

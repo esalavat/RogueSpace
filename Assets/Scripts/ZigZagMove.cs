@@ -6,8 +6,9 @@ public class ZigZagMove : MonoBehaviour
 {
     public float yMoveSpeed = 3f;
     public float zagTime = 2f;
-    private float timer = 0;
+    public float deadZoneY = -10f;
 
+    private float timer = 0;
     private int xDirection;
     
 
@@ -26,6 +27,10 @@ public class ZigZagMove : MonoBehaviour
             if(timer > zagTime + (zagTime * .5)) {
                 timer = 0;
             }
+        }
+
+        if(transform.position.y < deadZoneY) {
+            Destroy(gameObject);
         }
 
         timer += Time.deltaTime;
