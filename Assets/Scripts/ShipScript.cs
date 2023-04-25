@@ -113,6 +113,7 @@ public class ShipScript : MonoBehaviour
             Destroy(newExplosion, 2);
         }
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        transform.position = new Vector3(100, 100, 0);
     }
 
     private void doCameraShake() {
