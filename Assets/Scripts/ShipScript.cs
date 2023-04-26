@@ -26,6 +26,7 @@ public class ShipScript : MonoBehaviour
     private Vector3 maxScreenBounds;
     private float shootTimer = 0;
     private bool isShieldRegenning = false;
+    private bool doubleLaser = false;
 
     void Start()
     {    
@@ -46,6 +47,10 @@ public class ShipScript : MonoBehaviour
         }
         EventManager.LifeUpdated(life);
 
+        if(GameStateManager.Instance.hasUpgrade(Upgrade.DoubleLaser)) {
+            doubleLaser = true;
+        }
+
         minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
         logicManagerScript = GameObject.FindGameObjectWithTag("logic").GetComponent<LogicManagerScript>();
@@ -53,32 +58,9 @@ public class ShipScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        // if(Input.touchCount > 0 && isAlive) {
-        //     Touch touch = Input.GetTouch(0);
-        //     inputPosition = Camera.main.ScreenToWorldPoint(touch.position);
-        //     inputPosition.z = 0;
-        //     direction = (inputPosition - transform.position);
-        //     ship.velocity = new Vector2(direction.x, direction.y) * moveSpeed;
-        // } else {
-        //     ship.velocity = Vector2.zero;
-        // }
-
         if(isAlive) {
-            inputPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            inputPosition.z = 0;
-            inputPosition.x = Mathf.Clamp(inputPosition.x, minScreenBounds.x, maxScreenBounds.x);
-            inputPosition.y = Mathf.Clamp(inputPosition.y, minScreenBounds.y, maxScreenBounds.y);
-
-            direction = (inputPosition - transform.position);
-            ship.velocity = new Vector2(direction.x, direction.y) * moveSpeed;
-
-            if(shootTimer >= shootSpeed) {
-                shootLaser();
-                shootTimer -= shootSpeed;
-            } else {
-                shootTimer += Time.deltaTime;
-            }
+            doMovement();
+            doLaser();
         } else {
             ship.velocity = Vector2.zero;
         }
@@ -88,6 +70,25 @@ public class ShipScript : MonoBehaviour
         }
     }
 
+    private void doMovement() {
+        inputPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        inputPosition.z = 0;
+        inputPosition.y += .4f;
+        inputPosition.x = Mathf.Clamp(inputPosition.x, minScreenBounds.x, maxScreenBounds.x);
+        inputPosition.y = Mathf.Clamp(inputPosition.y, minScreenBounds.y, maxScreenBounds.y);
+
+        direction = (inputPosition - transform.position);
+        ship.velocity = new Vector2(direction.x, direction.y) * moveSpeed;
+    }
+
+    private void doLaser() {
+        if(shootTimer >= shootSpeed) {
+            shootLaser();
+            shootTimer -= shootSpeed;
+        } else {
+            shootTimer += Time.deltaTime;
+        }
+    }
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.tag == "asteroid" || collision.gameObject.tag == "enemyLaser") {
             doCameraShake();
@@ -107,9 +108,23 @@ public class ShipScript : MonoBehaviour
     }
 
     private void shootLaser() {
-        GameObject newLaser = Instantiate(laser, new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
+        float x1Pos = transform.position.x;
+        float x2Pos = transform.position.x;
+
+        if(doubleLaser) {
+            x1Pos -= .2f;
+            x2Pos += .2f;
+        }
+
+        GameObject newLaser = Instantiate(laser, new Vector3(x1Pos, transform.position.y, 1), transform.rotation);
         newLaser.GetComponent<Rigidbody2D>().velocity = Vector2.up * laserSpeed;
         Destroy(newLaser, 2);
+
+        if(doubleLaser) {
+            GameObject newLaser2 = Instantiate(laser, new Vector3(x2Pos, transform.position.y, 1), transform.rotation);
+            newLaser2.GetComponent<Rigidbody2D>().velocity = Vector2.up * laserSpeed;
+            Destroy(newLaser2, 2);
+        }
     }
 
     private void decrementShield() {
