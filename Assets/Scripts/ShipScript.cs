@@ -5,24 +5,27 @@ using UnityEngine;
 public class ShipScript : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public Rigidbody2D ship;
-    public LogicManagerScript logicManagerScript;
     public bool isAlive = true;
     public float shootSpeed = 1f;
-    public GameObject laser;
     public float laserSpeed = 20f;
+    public float shieldRegenTime = 20f;
+
+    public Rigidbody2D ship;
+    public LogicManagerScript logicManagerScript;
+    public GameObject laser;
     public GameObject loseShieldParticle;
     public CameraShake cameraShake;
     public GameObject explosionPrefab;
 
-    public int life = 1;
-
+    private int life = 1;
+    private int maxLife = 1;
 
     private Vector3 inputPosition;
     private Vector3 direction;
     private Vector3 minScreenBounds;
     private Vector3 maxScreenBounds;
     private float shootTimer = 0;
+    private bool isShieldRegenning = false;
 
     void Start()
     {    
@@ -30,9 +33,9 @@ public class ShipScript : MonoBehaviour
             shootSpeed /= 3;
         }
      
-        life = 1;
         if(GameStateManager.Instance.hasUpgrade(Upgrade.Shield1)) {
             life += 1;
+            maxLife += 1;
         }
         EventManager.LifeUpdated(life);
 
@@ -73,6 +76,9 @@ public class ShipScript : MonoBehaviour
             ship.velocity = Vector2.zero;
         }
         
+        if(GameStateManager.Instance.hasUpgrade(Upgrade.ShieldRegen) && life < maxLife && !isShieldRegenning) {
+            StartCoroutine(startShieldRegen());
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
@@ -102,9 +108,24 @@ public class ShipScript : MonoBehaviour
     private void decrementShield() {
         life -= 1;
         EventManager.LifeUpdated(life);
-        GameObject loseShield = Instantiate(loseShieldParticle, new Vector3(transform.position.x, transform.position.y, 1), transform.rotation);
-        loseShield.transform.parent = transform;
+        GameObject loseShield = Instantiate(loseShieldParticle, transform);
         Destroy(loseShield, 1);
+    }
+
+    private IEnumerator startShieldRegen() {
+        isShieldRegenning = true;
+
+        float regenTimer = 0;
+
+        while(regenTimer < shieldRegenTime) {
+            regenTimer += Time.deltaTime;
+            EventManager.ShieldRegen(regenTimer/shieldRegenTime);
+            yield return new WaitForFixedUpdate();
+        }
+
+        life++;
+        EventManager.LifeUpdated(life);
+        isShieldRegenning = false;
     }
 
     private void destroyShip() {

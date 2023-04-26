@@ -18,4 +18,7 @@ public static class EventManager {
 
     public static event Action<int> OnLifeUpdated;
     public static void LifeUpdated(int life) => OnLifeUpdated?.Invoke(life);
+
+    public static event Action<float> OnShieldRegen;
+    public static void ShieldRegen(float percent) => OnShieldRegen?.Invoke(percent);
 }

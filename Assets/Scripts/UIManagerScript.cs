@@ -12,6 +12,7 @@ public class UIManagerScript : MonoBehaviour
     public GameObject shieldUI;
     public GameObject upgradeUIPrefab;
     public GameObject upgradeGroup;
+    public GameObject shieldRegenBar;
     private Dictionary<Upgrade, GameObject> upgradeUIs = new Dictionary<Upgrade, GameObject>();
 
     public static UIManagerScript Instance { get; private set; }
@@ -45,6 +46,7 @@ public class UIManagerScript : MonoBehaviour
         EventManager.OnCreditsUpdated += UpdateCredits;
         EventManager.OnMessage += DisplayMessage;
         EventManager.OnLifeUpdated += UpdateShield;
+        EventManager.OnShieldRegen += UpdateShieldRegen;
     }
 
     private void OnDisable()
@@ -54,6 +56,7 @@ public class UIManagerScript : MonoBehaviour
         EventManager.OnCreditsUpdated -= UpdateCredits;
         EventManager.OnMessage -= DisplayMessage;
         EventManager.OnLifeUpdated -= UpdateShield;
+        EventManager.OnShieldRegen -= UpdateShieldRegen;
     }
 
     public void UpdateCredits(int credits) {
@@ -68,22 +71,12 @@ public class UIManagerScript : MonoBehaviour
         }
     }
 
-    public void PurchaseLaserUpgrade() {
-        if(GameStateManager.Instance.getGameState().credits >= 100) {
-            PurchaseUpgrade(Upgrade.LaserSpeed1);
-        } else {
-            EventManager.Message("Not enough credits!");
-        }
-    }
-
-    public void PurchaseShieldUpgrade() {
-        if(GameStateManager.Instance.getGameState().credits >= 150) {
-            PurchaseUpgrade(Upgrade.Shield1);
-        } else {
-            EventManager.Message("Not enough credits!");
-        }
-    }
     private void PurchaseUpgrade(Upgrade upgrade) {
+        if(GameStateManager.Instance.getGameState().credits < upgrade.cost) {
+            EventManager.Message("Not enough credits!");
+            return;
+        }
+
         GameStateManager.Instance.addUpgrade(upgrade);
         GameStateManager.Instance.addCredits(upgrade.cost * -1);
         UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.GetComponent<Button>().interactable = false;
@@ -117,21 +110,37 @@ public class UIManagerScript : MonoBehaviour
 
     private void UpdateUpgrades() {
         foreach(Upgrade upgrade in GameStateManager.Instance.gameState.purchasedUpgrades) {
-            getUpgradeUI(upgrade).GetComponent<Button>().interactable = false;
+            GetUpgradeUI(upgrade).GetComponent<Button>().interactable = false;
         }
     }
 
     private void UpdateShield(int life) {
+        shieldUI.transform.Find("ShieldAmount").gameObject.GetComponent<TMP_Text>().text = life-1 + "X";
         if(life > 1) {
-            shieldUI.SetActive(true);
-            shieldUI.transform.Find("ShieldAmount").gameObject.GetComponent<TMP_Text>().text = life-1 + "X";
+            ShieldVisibility(true);
         } else {
-            shieldUI.SetActive(false);
-        }
-        
+            ShieldVisibility(false);
+        }        
     }
 
-    private GameObject getUpgradeUI(Upgrade upgrade) {
+    private void ShieldVisibility(bool visible) {
+        if(GameStateManager.Instance.hasUpgrade(Upgrade.ShieldRegen)) {
+            shieldUI.SetActive(true);
+        } else {
+            shieldUI.SetActive(visible);
+        }
+    }
+
+    private void UpdateShieldRegen(float percent) {
+        shieldRegenBar.transform.Find("Bar").GetComponent<Image>().fillAmount = percent;
+        if(percent > .99 || percent < .01) {
+            shieldRegenBar.SetActive(false);
+        } else {
+            shieldRegenBar.SetActive(true); 
+        }
+    }
+
+    private GameObject GetUpgradeUI(Upgrade upgrade) {
         return upgradeUIs[upgrade];
     }
 }
