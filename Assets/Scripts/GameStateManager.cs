@@ -30,4 +30,9 @@ public class GameStateManager : MonoBehaviour
         gameState.credits += value;
         EventManager.CreditsUpdated(gameState.credits);
     }
+
+    public void wipeState() {
+        gameState.credits = 0;
+        gameState.purchasedUpgrades = new System.Collections.Generic.List<Upgrade>();
+    }
 }

@@ -6,10 +6,12 @@ public class Upgrade
 {
     public static readonly Upgrade LaserSpeed1 = new Upgrade(1, "Laser Speed 1.0", 100, "Sprites/Laser", 4, 100);
     public static readonly Upgrade Shield1 = new Upgrade(2, "Shield 1.0", 250, "Sprites/Shield", 100, 100);
-    //public static readonly Upgrade TwoLaser = new Upgrade(3, "Double Laser", 500, "Sprites/Laser", 4, 100);
-    //public static readonly Upgrade Torpedo = new Upgrade(4, "Photon Torpedo", 1000, "Sprites/Laser", 4, 100);
-    public static readonly Upgrade ShieldRegen = new Upgrade(5, "Shield Regen", 250, "Sprites/Shield", 100, 100);
-
+    public static readonly Upgrade Shield2 = new Upgrade(3, "Shield 2.0", 500, "Sprites/Shield", 100, 100);
+    //public static readonly Upgrade TwoLaser = new Upgrade(4, "Double Laser", 500, "Sprites/Laser", 4, 100);
+    public static readonly Upgrade LaserSpeed2 = new Upgrade(5, "Laser Speed 2.0", 1000, "Sprites/Laser", 4, 100);
+    public static readonly Upgrade ShieldRegen = new Upgrade(6, "Shield Regen", 2000, "Sprites/Shield", 100, 100);
+    //public static readonly Upgrade Torpedo = new Upgrade(7, "Photon Torpedo", 1000, "Sprites/Laser", 4, 100);
+    
     public static IEnumerable<Upgrade> Values 
     {
         get
@@ -17,8 +19,11 @@ public class Upgrade
             yield return LaserSpeed1;
             yield return Shield1;
             //yield return TwoLaser;
-            //yield return Torpedo;
+            yield return Shield2;
+            yield return LaserSpeed2;
             yield return ShieldRegen;
+            //yield return Torpedo;
+            
         }
     }
 
