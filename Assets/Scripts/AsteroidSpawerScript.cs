@@ -11,10 +11,15 @@ public class AsteroidSpawerScript : MonoBehaviour
     public float spawnSpeed = 2;
     public float minSpawnSpeed = 0.5f;
     public float spawnRandomness = 1;
+    public int coinMaxValue = 10;
+    public int enemyHPMax = 10;
+
     private float timer = 0;
     private float nextSpawnTime;
     private float nextEnemySpawnTime;
     private float spawnSpeedAcceleration = .001f;
+    private int coinValue = 1;
+    private int enemyHP = 1;
 
     void Start()
     {
@@ -23,7 +28,6 @@ public class AsteroidSpawerScript : MonoBehaviour
         nextEnemySpawnTime = 20;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         if(timer > nextSpawnTime) {
@@ -36,7 +40,18 @@ public class AsteroidSpawerScript : MonoBehaviour
             nextEnemySpawnTime = getNextEnemySpawnTime();
         }
         
+        updateCoinValue();
+        updateEnemyHP();
+
         timer+=Time.deltaTime;
+    }
+
+    private void updateCoinValue() {
+        coinValue = Mathf.Min(coinMaxValue, (int)(timer / 20) + 1);
+    }
+
+    private void updateEnemyHP() {
+         enemyHP = Mathf.Min(enemyHPMax, (int)(timer / 60) + 1);
     }
 
     private void spawnAsteroid() {
@@ -44,7 +59,8 @@ public class AsteroidSpawerScript : MonoBehaviour
         float leftestPoint = transform.position.x - horizontalOffset;
         float rightestPoint = transform.position.x + horizontalOffset;
 
-        Instantiate(asteroids[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
+        var asteroid = Instantiate(asteroids[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
+        asteroid.GetComponent<EnemyScript>().coinValue = coinValue;
     }
 
     private float getNextAsteroidSpawnTime() {
@@ -78,6 +94,7 @@ public class AsteroidSpawerScript : MonoBehaviour
 
         GameObject newEnemy = Instantiate(enemies[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
         newEnemy.GetComponent<EnemyLaser>().laserEnabled = enemiesShoot;
+        newEnemy.GetComponent<EnemyScript>().coinValue = coinValue;
     }
 
     private float getNextEnemySpawnTime() {

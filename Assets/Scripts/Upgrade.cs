@@ -20,10 +20,10 @@ public class Upgrade
         {
             yield return LaserSpeed1;
             yield return Shield1;
-            //yield return TwoLaser;
-            yield return Shield2;
-            yield return LaserSpeed2;
             yield return ShieldRegen;
+            //yield return TwoLaser;
+            yield return LaserSpeed2;
+            yield return Shield2;
             yield return DoubleLaser;
             //yield return Torpedo;
             

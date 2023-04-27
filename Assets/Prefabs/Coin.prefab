@@ -261,3 +261,5 @@ MonoBehaviour:
   moveSpeed: 2
   deadZoneY: -10
   value: 1
+  coinValuePrefab: {fileID: 6045961429007331492, guid: 08e6224ffb60ec9488ac0f9904396d93,
+    type: 3}

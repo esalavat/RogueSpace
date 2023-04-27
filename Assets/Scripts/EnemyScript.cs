@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour {
     public int scoreValue = 1;
     public float coinChance = .33f;
+    public int coinValue = 1;
+
     public GameObject coin;
     public GameObject explosion;
 
@@ -20,7 +22,8 @@ public class EnemyScript : MonoBehaviour {
     void SpawnCoin(float x, float y) {
         float rand = Random.value;
         if(rand <= coinChance) {
-            Instantiate(coin, new Vector3(x, y, 0), Quaternion.identity);
+            var newCoin = Instantiate(coin, new Vector3(x, y, 0), Quaternion.identity);
+            newCoin.GetComponent<CoinScript>().value = coinValue;
         }
     }
 
