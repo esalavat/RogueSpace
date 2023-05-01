@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class UIManagerScript : MonoBehaviour
 {
@@ -93,7 +94,7 @@ public class UIManagerScript : MonoBehaviour
     }
 
     private void LoadUpgrades() {
-        foreach(var upgrade in Upgrade.Values)
+        foreach(var upgrade in Upgrade.Values.OrderBy(x => x.cost))
         {
             GameObject uiElement = Instantiate(upgradeUIPrefab, upgradeGroup.transform, false);
             uiElement.transform.Find("DisplayName").gameObject.GetComponent<TMP_Text>().text = upgrade.displayName;

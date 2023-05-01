@@ -11,7 +11,7 @@ public class AsteroidSpawerScript : MonoBehaviour
     public float spawnSpeed = 2;
     public float minSpawnSpeed = 0.5f;
     public float spawnRandomness = 1;
-    public int coinMaxValue = 10;
+    public int coinMaxValue = 50;
     public int enemyHPMax = 10;
 
     private float timer = 0;
@@ -47,7 +47,7 @@ public class AsteroidSpawerScript : MonoBehaviour
     }
 
     private void updateCoinValue() {
-        coinValue = Mathf.Min(coinMaxValue, (int)(timer / 20) + 1);
+        coinValue = Mathf.Min(coinMaxValue, (int)(timer / 40) + 1);
     }
 
     private void updateEnemyHP() {

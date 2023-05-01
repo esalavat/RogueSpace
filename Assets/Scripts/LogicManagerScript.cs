@@ -33,7 +33,7 @@ public class LogicManagerScript : MonoBehaviour
         sunIntensity = Math.Min(sunMaxIntensity, timer / 100f);
         sun.GetComponent<Light2D>().intensity = sunIntensity;
         foreach(var light in lightRays) {
-            light.GetComponent<Light2D>().intensity = sunIntensity/15;
+            light.GetComponent<Light2D>().intensity = sunIntensity/10;
         }
     }
 
