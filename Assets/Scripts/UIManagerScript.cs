@@ -69,6 +69,10 @@ public class UIManagerScript : MonoBehaviour
                 creditsText.gameObject.SetActive(true);
                 creditsText.text = GameStateManager.Instance.gameState.credits.ToString();
             }
+        } else {
+            foreach(var creditsText in creditsTexts) {
+                creditsText.gameObject.SetActive(false);
+            }    
         }
     }
 
@@ -111,7 +115,9 @@ public class UIManagerScript : MonoBehaviour
 
     private void UpdateUpgrades() {
         foreach(Upgrade upgrade in GameStateManager.Instance.gameState.purchasedUpgrades) {
-            GetUpgradeUI(upgrade).GetComponent<Button>().interactable = false;
+            var upgradeUI = GetUpgradeUI(upgrade);
+            upgradeUI.GetComponent<Button>().interactable = false;
+            upgradeUI.transform.Find("Cost").GetComponent<TMP_Text>().text = "Purchased";
         }
     }
 
