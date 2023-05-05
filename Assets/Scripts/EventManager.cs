@@ -21,4 +21,10 @@ public static class EventManager {
 
     public static event Action<float> OnShieldRegen;
     public static void ShieldRegen(float percent) => OnShieldRegen?.Invoke(percent);
+
+    public static event Action OnBoss1Start;
+    public static void Boss1Start() => OnBoss1Start?.Invoke();
+
+    public static event Action OnBoss1End;
+    public static void Boss1End() => OnBoss1End?.Invoke();
 }

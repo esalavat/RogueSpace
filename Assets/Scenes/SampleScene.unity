@@ -171,6 +171,7 @@ MonoBehaviour:
   scrollSpeed: 0.4
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &7475402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,7 +418,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.3
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &167320115
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +519,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.7
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &221743737
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +569,7 @@ MonoBehaviour:
   scrollSpeed: 0.3
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &221743740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,6 +767,7 @@ MonoBehaviour:
   scrollSpeed: 0.4
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &257304665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -933,171 +938,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.7
   loopbackY: -8
-  spriteHeight: 9
---- !u!43 &295800343
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 10
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 42
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 16
-    localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0.5, z: 0}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 00000100020003000100000003000400010005000400030006000400050004000600070002000800000000000900030001000a00020004000b00010003000c00050007000d00040005000e00060006000f000700
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 16
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 28
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 704
-    _typelessdata: 0000003f000000bf000000000000803f0000008000000080000000800000003f000000bf0000003f000000bf0000003f0000003f00000000000000800000803f00000080000000800000003f0000003f0000003f0000003f0000003f00000000000000000000803f0000008000000080000000800000003f0000003f0000003f000000bf00000000000000bf0000000000000080000080bf00000000000000800000003f000000bf000000bf000000bf000000000000003f00000000000000800000803f0000008000000080000000bf0000003f0000003f0000003f000000bf000000bf0000000000000080000080bf0000000000000080000000bf000000bf000000bf000000bf000000bf0000000000000000000080bf000000800000008000000080000000bf000000bf000000bf0000003f000000bf0000003f00000000000080bf000000800000008000000080000000bf0000003f000000bf0000003f0000003f00000000000000000000803f0000008000000080000000800000003f0000003f0000003f000000bf0000003f000000bf0000000000000080000080bf00000000000000800000003f000000bf0000003f000000bf0000003f0000003f000000000000803f0000008000000080000000800000003f0000003f0000003f0000003f000000000000003f00000000000000800000803f0000008000000080000000bf0000003f0000003f0000003f00000000000000bf0000000000000080000080bf00000000000000800000003f000000bf000000bf000000bf000000bf0000003f00000000000000800000803f0000008000000080000000bf0000003f000000bf0000003f000000bf000000bf00000000000080bf000000800000008000000080000000bf000000bf000000bf000000bf000000bf0000000000000000000080bf000000800000008000000080000000bf000000bf000000bf0000003f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &326006789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,6 +1890,7 @@ MonoBehaviour:
   scrollSpeed: 0.5
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &725444808
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3000,8 +2843,8 @@ MonoBehaviour:
   - {x: 0.5, y: 0.5, z: 0}
   - {x: 0.5, y: -0.5, z: 0}
   m_ShapePathHash: 160822549
-  m_Mesh: {fileID: 295800343}
-  m_InstanceId: 55060
+  m_Mesh: {fileID: 1743499077}
+  m_InstanceId: 87752
   m_LocalBounds:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0.5, y: 0.5, z: 0}
@@ -3271,7 +3114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.9
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &1200374151
 GameObject:
   m_ObjectHideFlags: 0
@@ -3283,6 +3127,7 @@ GameObject:
   - component: {fileID: 1200374153}
   - component: {fileID: 1200374152}
   - component: {fileID: 1200374154}
+  - component: {fileID: 1200374155}
   m_Layer: 0
   m_Name: CodeManager
   m_TagString: logic
@@ -3307,6 +3152,7 @@ MonoBehaviour:
   scoreIncrement: 1
   scoreDelay: 2
   sunMaxIntensity: 3
+  boss1Time: 250
   gameOverScreen: {fileID: 1285585011}
   sun: {fileID: 1532390348}
   lightRays:
@@ -3347,6 +3193,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 11400000, guid: 1feca13c863c82c4c861cbbae2d5ffa6, type: 2}
+--- !u!114 &1200374155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200374151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e814354aeb40ce34886ca8a20d0a593a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  asteroidSpawerScript: {fileID: 1651246502}
+  boss1: {fileID: 8800080114461147116, guid: 7d60705782b19084aa1a0faac67aad42, type: 3}
 --- !u!1 &1223356144
 GameObject:
   m_ObjectHideFlags: 0
@@ -3446,7 +3306,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.3
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &1231044872
 GameObject:
   m_ObjectHideFlags: 0
@@ -3854,7 +3715,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.9
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &1361155631
 GameObject:
   m_ObjectHideFlags: 0
@@ -4465,7 +4327,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.7
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &1651246501
 GameObject:
   m_ObjectHideFlags: 0
@@ -4508,6 +4371,8 @@ MonoBehaviour:
   spawnRandomness: 1
   coinMaxValue: 10
   enemyHPMax: 10
+  spawnAsteroids: 1
+  spawnEnemies: 1
 --- !u!4 &1651246503
 Transform:
   m_ObjectHideFlags: 0
@@ -4622,7 +4487,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.3
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &1655622641
 GameObject:
   m_ObjectHideFlags: 0
@@ -4992,7 +4858,172 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.3
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
+--- !u!43 &1743499077
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 42
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 16
+    localAABB:
+      m_Center: {x: 0, y: 0, z: 0}
+      m_Extent: {x: 0.5, y: 0.5, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 00000100020003000100000003000400010005000400030006000400050004000600070002000800000000000900030001000a00020004000b00010003000c00050007000d00040005000e00060006000f000700
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 16
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 704
+    _typelessdata: 0000003f000000bf000000000000803f0000008000000080000000800000003f000000bf0000003f000000bf0000003f0000003f00000000000000800000803f00000080000000800000003f0000003f0000003f0000003f0000003f00000000000000000000803f0000008000000080000000800000003f0000003f0000003f000000bf00000000000000bf0000000000000080000080bf00000000000000800000003f000000bf000000bf000000bf000000000000003f00000000000000800000803f0000008000000080000000bf0000003f0000003f0000003f000000bf000000bf0000000000000080000080bf0000000000000080000000bf000000bf000000bf000000bf000000bf0000000000000000000080bf000000800000008000000080000000bf000000bf000000bf0000003f000000bf0000003f00000000000080bf000000800000008000000080000000bf0000003f000000bf0000003f0000003f00000000000000000000803f0000008000000080000000800000003f0000003f0000003f000000bf0000003f000000bf0000000000000080000080bf00000000000000800000003f000000bf0000003f000000bf0000003f0000003f000000000000803f0000008000000080000000800000003f0000003f0000003f0000003f000000000000003f00000000000000800000803f0000008000000080000000bf0000003f0000003f0000003f00000000000000bf0000000000000080000080bf00000000000000800000003f000000bf000000bf000000bf000000bf0000003f00000000000000800000803f0000008000000080000000bf0000003f000000bf0000003f000000bf000000bf00000000000080bf000000800000008000000080000000bf000000bf000000bf000000bf000000bf0000000000000000000080bf000000800000008000000080000000bf000000bf000000bf0000003f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0.5, y: 0.5, z: 0}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1755202589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5170,6 +5201,7 @@ MonoBehaviour:
   scrollSpeed: 0.4
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &1772837102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5451,7 +5483,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.9
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &1841148982
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,6 +5762,7 @@ MonoBehaviour:
   scrollSpeed: 0.5
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &1905250337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5981,6 +6015,7 @@ MonoBehaviour:
   scrollSpeed: 0.5
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!1 &1982552880
 GameObject:
   m_ObjectHideFlags: 0
@@ -6080,7 +6115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.7
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &1983645562
 GameObject:
   m_ObjectHideFlags: 0
@@ -6129,6 +6165,7 @@ MonoBehaviour:
   scrollSpeed: 0.3
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &1983645565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6299,7 +6336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollSpeed: 0.9
   loopbackY: -8
-  spriteHeight: 9
+  spriteHeight: 6
+  numSprites: 4
 --- !u!1 &2006203879
 GameObject:
   m_ObjectHideFlags: 0
@@ -6562,6 +6600,7 @@ MonoBehaviour:
   scrollSpeed: 0.3
   loopbackY: -20
   spriteHeight: 22.23
+  numSprites: 3
 --- !u!114 &2012486841
 MonoBehaviour:
   m_ObjectHideFlags: 0

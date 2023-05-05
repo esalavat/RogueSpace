@@ -12,6 +12,7 @@ public class LogicManagerScript : MonoBehaviour
     public int scoreIncrement = 1;
     public int scoreDelay =  3;
     public float sunMaxIntensity = 3f;
+    public float boss1Time = 300;
 
     public GameObject gameOverScreen;
     public GameObject sun;
@@ -20,13 +21,23 @@ public class LogicManagerScript : MonoBehaviour
     private float sunIntensity = 0;
     private float timer = 0;
 
+    public static bool bossFight = false;
+
+    public static bool boss1Complete = false;
+
     void OnEnable() {
         EventManager.OnEnemyDestroyed += addScore;
     }
 
-    void FixedUpdate() {
-        timer += Time.deltaTime;
-        updateSunIntensity();
+    void Update() {
+        if(!bossFight) {
+            timer += Time.deltaTime;
+            updateSunIntensity();
+
+            if(!boss1Complete && timer >= boss1Time) {
+                EventManager.Boss1Start();
+            }
+        }
     }
 
     private void updateSunIntensity() {

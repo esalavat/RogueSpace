@@ -13,6 +13,8 @@ public class AsteroidSpawerScript : MonoBehaviour
     public float spawnRandomness = 1;
     public int coinMaxValue = 50;
     public int enemyHPMax = 10;
+    public bool spawnAsteroids = true;
+    public bool spawnEnemies = true;
 
     private float timer = 0;
     private float nextSpawnTime;
@@ -40,10 +42,11 @@ public class AsteroidSpawerScript : MonoBehaviour
             nextEnemySpawnTime = getNextEnemySpawnTime();
         }
         
-        updateCoinValue();
-        updateEnemyHP();
-
-        timer+=Time.deltaTime;
+        if(!LogicManagerScript.bossFight) {
+            updateCoinValue();
+            updateEnemyHP();
+            timer+=Time.deltaTime;
+        }
     }
 
     private void updateCoinValue() {
@@ -55,12 +58,14 @@ public class AsteroidSpawerScript : MonoBehaviour
     }
 
     private void spawnAsteroid() {
-        int randomIndex = Random.Range(0, asteroids.Length);
-        float leftestPoint = transform.position.x - horizontalOffset;
-        float rightestPoint = transform.position.x + horizontalOffset;
+        if(spawnAsteroids) {
+            int randomIndex = Random.Range(0, asteroids.Length);
+            float leftestPoint = transform.position.x - horizontalOffset;
+            float rightestPoint = transform.position.x + horizontalOffset;
 
-        var asteroid = Instantiate(asteroids[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
-        asteroid.GetComponent<EnemyScript>().coinValue = coinValue;
+            var asteroid = Instantiate(asteroids[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
+            asteroid.GetComponent<EnemyScript>().coinValue = coinValue;
+        }
     }
 
     private float getNextAsteroidSpawnTime() {
@@ -78,23 +83,25 @@ public class AsteroidSpawerScript : MonoBehaviour
     }
 
     private void spawnEnemy() {
-        int enemiesLength = enemies.Length;
-        if(timer < 40) {
-            enemiesLength--;
+        if(spawnEnemies) {
+            int enemiesLength = enemies.Length;
+            if(timer < 40) {
+                enemiesLength--;
+            }
+
+            bool enemiesShoot = false;
+            if(timer > 80) {
+                enemiesShoot = true;
+            }
+
+            int randomIndex = Random.Range(0, enemiesLength);
+            float leftestPoint = transform.position.x - horizontalOffset;
+            float rightestPoint = transform.position.x + horizontalOffset;
+
+            GameObject newEnemy = Instantiate(enemies[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
+            newEnemy.GetComponent<EnemyLaser>().laserEnabled = enemiesShoot;
+            newEnemy.GetComponent<EnemyScript>().coinValue = coinValue;
         }
-
-        bool enemiesShoot = false;
-        if(timer > 80) {
-            enemiesShoot = true;
-        }
-
-        int randomIndex = Random.Range(0, enemiesLength);
-        float leftestPoint = transform.position.x - horizontalOffset;
-        float rightestPoint = transform.position.x + horizontalOffset;
-
-        GameObject newEnemy = Instantiate(enemies[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
-        newEnemy.GetComponent<EnemyLaser>().laserEnabled = enemiesShoot;
-        newEnemy.GetComponent<EnemyScript>().coinValue = coinValue;
     }
 
     private float getNextEnemySpawnTime() {

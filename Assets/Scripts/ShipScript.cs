@@ -90,11 +90,23 @@ public class ShipScript : MonoBehaviour
         }
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.tag == "asteroid" || collision.gameObject.tag == "enemyLaser") {
+        var collisionGameObject = collision.gameObject;
+        if(collisionGameObject.tag == "asteroid" 
+            || collisionGameObject.tag == "enemyLaser" 
+            || "enemy".Equals(collisionGameObject.tag)
+        ) {
             doCameraShake();
+
+            var health = collisionGameObject.GetComponent<Health>();
+
+            if(health != null && health.currentHp > 1) {
+                health.currentHp--;
+            } else {
+                Destroy(collision.gameObject);
+            }
+
             if(life > 1) {
                 decrementShield();
-                Destroy(collision.gameObject);
             } else {
                 Invoke("triggerGameOver", 1f);
                 destroyShip();
@@ -156,7 +168,7 @@ public class ShipScript : MonoBehaviour
             Destroy(newExplosion, 2);
         }
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
-        transform.position = new Vector3(100, 100, 0);
+        transform.position = new Vector3(0, -10, 0);
     }
 
     private void doCameraShake() {
