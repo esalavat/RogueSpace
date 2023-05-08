@@ -17,18 +17,8 @@ public class Boss1BattleManager : MonoBehaviour
         EventManager.OnBoss1End -= stopBattle;
     }
 
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void startBattle() {
+        Debug.Log("startBattle");
         asteroidSpawerScript.spawnAsteroids = false;
         asteroidSpawerScript.spawnEnemies = false;
         LogicManagerScript.bossFight = true;
@@ -40,6 +30,7 @@ public class Boss1BattleManager : MonoBehaviour
     }
 
     private void stopBattle() {
+        Debug.Log("stopBattle");
         asteroidSpawerScript.spawnAsteroids = true;
         asteroidSpawerScript.spawnEnemies = true;
         LogicManagerScript.bossFight = false;

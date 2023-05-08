@@ -5,7 +5,6 @@ using UnityEngine;
 public class ShipScript : MonoBehaviour
 {
     public float moveSpeed = 10f;
-    public bool isAlive = true;
     public float shootSpeed = 1f;
     public float laserSpeed = 20f;
     public float shieldRegenTime = 20f;
@@ -58,7 +57,7 @@ public class ShipScript : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(isAlive) {
+        if(LogicManagerScript.isAlive) {
             doMovement();
             doLaser();
         } else {
@@ -108,11 +107,15 @@ public class ShipScript : MonoBehaviour
             if(life > 1) {
                 decrementShield();
             } else {
-                Invoke("triggerGameOver", 1f);
-                destroyShip();
-                isAlive = false;
+                doGameOver();
             }
         }
+    }
+
+    private void doGameOver() {
+        Invoke("triggerGameOver", 1f);
+        destroyShip();
+        LogicManagerScript.isAlive = false;
     }
 
     private void triggerGameOver() {

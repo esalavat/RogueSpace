@@ -25,6 +25,8 @@ public class AsteroidSpawerScript : MonoBehaviour
 
     void Start()
     {
+        spawnAsteroids = true;
+        spawnEnemies = true;
         spawnAsteroid();
         nextSpawnTime = getNextAsteroidSpawnTime();
         nextEnemySpawnTime = 20;

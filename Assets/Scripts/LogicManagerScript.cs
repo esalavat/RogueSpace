@@ -17,24 +17,33 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject gameOverScreen;
     public GameObject sun;
     public List<GameObject> lightRays;
+    public GameObject levelProgressIndicator;
 
     private float sunIntensity = 0;
     private float timer = 0;
 
+    public static bool isAlive = true;
     public static bool bossFight = false;
-
     public static bool boss1Complete = false;
 
-    void OnEnable() {
+    void Awake() {
+        Debug.Log("LogicManagerScript OnEnable");
+        timer = 0;
+        isAlive = true;
+        bossFight = false;
+        boss1Complete = false;
+        sunIntensity = 0;
         EventManager.OnEnemyDestroyed += addScore;
     }
 
     void Update() {
-        if(!bossFight) {
+        if(!bossFight && isAlive) {
             timer += Time.deltaTime;
             updateSunIntensity();
+            updateLevelProgress();
 
             if(!boss1Complete && timer >= boss1Time) {
+                bossFight = true;
                 EventManager.Boss1Start();
             }
         }
@@ -46,6 +55,27 @@ public class LogicManagerScript : MonoBehaviour
         foreach(var light in lightRays) {
             light.GetComponent<Light2D>().intensity = sunIntensity/10;
         }
+    }
+
+    private void updateLevelProgress() {
+        float endTime = boss1Time;
+        float startY = -100;
+        float endY = 400;
+        float currentProgress = timer/endTime;
+        float barRange = (endY - startY);
+        float progressY = (barRange * currentProgress);
+        float currentY = startY + progressY;
+        
+        if(currentProgress > .5f) {
+            GameStateManager.Instance.gameState.showProgress = true;
+        }
+        
+        if(GameStateManager.Instance.gameState.showProgress) {
+            levelProgressIndicator.transform.parent.gameObject.SetActive(true);
+        }
+        
+        var rectTransform = levelProgressIndicator.GetComponent<RectTransform>();
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, currentY);
     }
 
     [ContextMenu("addScore")]
