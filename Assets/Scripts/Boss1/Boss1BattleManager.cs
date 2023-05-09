@@ -18,7 +18,7 @@ public class Boss1BattleManager : MonoBehaviour
     }
 
     private void startBattle() {
-        Debug.Log("startBattle");
+        Debug.Log("Boss1BattleManager startBattle");
         asteroidSpawerScript.spawnAsteroids = false;
         asteroidSpawerScript.spawnEnemies = false;
         LogicManagerScript.bossFight = true;
@@ -30,11 +30,11 @@ public class Boss1BattleManager : MonoBehaviour
     }
 
     private void stopBattle() {
-        Debug.Log("stopBattle");
+        Debug.Log("Boss1BattleManager stopBattle");
         asteroidSpawerScript.spawnAsteroids = true;
         asteroidSpawerScript.spawnEnemies = true;
-        LogicManagerScript.bossFight = false;
         LogicManagerScript.boss1Complete = true;
+        LogicManagerScript.bossFight = false;
     }
     
 }

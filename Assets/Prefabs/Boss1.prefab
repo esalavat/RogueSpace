@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 8800080114461147111}
   - component: {fileID: 8800080114461147110}
   - component: {fileID: 8800080114461147109}
+  - component: {fileID: 3933609954045127824}
   m_Layer: 0
   m_Name: Boss1
   m_TagString: Untagged
@@ -392,6 +393,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 50
   currentHp: 50
+--- !u!114 &3933609954045127824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8800080114461147116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_ComponentVersion: 1
+  m_HasRenderer: 1
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 000000005f9118745dfefaa5
+  m_ShapePath:
+  - {x: -0.020556688, y: -0.44425076, z: 0}
+  - {x: -0.48327518, y: 0.037281357, z: 0}
+  - {x: 0.031706452, y: 0.48327526, z: 0}
+  - {x: 0.48327523, y: 0.03519261, z: 0}
+  m_ShapePathHash: -1512163981
+  m_Mesh: {fileID: 0}
+  m_InstanceId: 74528
+  m_LocalBounds:
+    m_Center: {x: 0.000000029802322, y: 0.019512236, z: 0}
+    m_Extent: {x: 0.4832752, y: 0.463763, z: 0}
 --- !u!1 &8800080114669586160
 GameObject:
   m_ObjectHideFlags: 0

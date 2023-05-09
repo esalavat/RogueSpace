@@ -21,18 +21,29 @@ public class LogicManagerScript : MonoBehaviour
 
     private float sunIntensity = 0;
     private float timer = 0;
+    private bool debug = false;
 
     public static bool isAlive = true;
     public static bool bossFight = false;
     public static bool boss1Complete = false;
+    public static bool nebulaOn = false;
 
-    void Awake() {
-        Debug.Log("LogicManagerScript OnEnable");
+    void Start() {
+        debug = GameStateManager.Instance.gameState.debug;
+        boss1Time /= (debug ? 15 : 1);
+    }
+
+    void OnEnable() {
+        EventManager.OnEnemyDestroyed += addScore;
         timer = 0;
         isAlive = true;
         bossFight = false;
         boss1Complete = false;
+        nebulaOn = false;
         sunIntensity = 0;
+    }
+
+    void OnDisable() {
         EventManager.OnEnemyDestroyed += addScore;
     }
 
@@ -46,11 +57,15 @@ public class LogicManagerScript : MonoBehaviour
                 bossFight = true;
                 EventManager.Boss1Start();
             }
+
+            if(!nebulaOn && timer > boss1Time + 1) {
+                nebulaOn = true;
+            }
         }
     }
 
     private void updateSunIntensity() {
-        sunIntensity = Math.Min(sunMaxIntensity, timer / 100f);
+        sunIntensity = Math.Min(sunMaxIntensity, (timer * (debug ? 15 : 1)) / 100f);
         sun.GetComponent<Light2D>().intensity = sunIntensity;
         foreach(var light in lightRays) {
             light.GetComponent<Light2D>().intensity = sunIntensity/10;
@@ -60,7 +75,7 @@ public class LogicManagerScript : MonoBehaviour
     private void updateLevelProgress() {
         float endTime = boss1Time;
         float startY = -100;
-        float endY = 400;
+        float endY = 410;
         float currentProgress = timer/endTime;
         float barRange = (endY - startY);
         float progressY = (barRange * currentProgress);
@@ -76,6 +91,10 @@ public class LogicManagerScript : MonoBehaviour
         
         var rectTransform = levelProgressIndicator.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, currentY);
+    }
+
+    private void boss1End() {
+        boss1Complete = true;
     }
 
     [ContextMenu("addScore")]

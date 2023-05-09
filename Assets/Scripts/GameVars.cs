@@ -8,4 +8,5 @@ public class GameVars : ScriptableObject
     public int credits;
     public List<Upgrade> purchasedUpgrades;
     public bool showProgress;
+    public bool debug = false;
 }

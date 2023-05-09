@@ -7,18 +7,24 @@ public class AsteroidSpawerScript : MonoBehaviour
 {
     public GameObject[] asteroids;
     public GameObject[] enemies;
+    public GameObject[] pulsars;
+
     public float horizontalOffset = 10;
     public float spawnSpeed = 2;
     public float minSpawnSpeed = 0.5f;
     public float spawnRandomness = 1;
+    public float pulsarSpawnRandomness = 2;
+    public float pulsarSpawnSpeed = 2;
     public int coinMaxValue = 50;
     public int enemyHPMax = 10;
     public bool spawnAsteroids = true;
     public bool spawnEnemies = true;
+    public bool spawnPulsars = true;
 
     private float timer = 0;
     private float nextSpawnTime;
     private float nextEnemySpawnTime;
+    private float nextPulsarSpawnTime;
     private float spawnSpeedAcceleration = .001f;
     private int coinValue = 1;
     private int enemyHP = 1;
@@ -27,9 +33,11 @@ public class AsteroidSpawerScript : MonoBehaviour
     {
         spawnAsteroids = true;
         spawnEnemies = true;
+        spawnPulsars = true;
         spawnAsteroid();
         nextSpawnTime = getNextAsteroidSpawnTime();
         nextEnemySpawnTime = 20;
+        nextPulsarSpawnTime = 1;
     }
 
     void FixedUpdate()
@@ -42,6 +50,11 @@ public class AsteroidSpawerScript : MonoBehaviour
         if(timer > nextEnemySpawnTime) {
             spawnEnemy();
             nextEnemySpawnTime = getNextEnemySpawnTime();
+        }
+
+        if(timer > nextPulsarSpawnTime) {
+            spawnPulsar();
+            nextPulsarSpawnTime = getNextPulsarSpawnTime();
         }
         
         if(!LogicManagerScript.bossFight) {
@@ -109,6 +122,21 @@ public class AsteroidSpawerScript : MonoBehaviour
     private float getNextEnemySpawnTime() {
         float enemySpawnSpeed = ((timer-20)*.001f * -1) + 5f;
         float output = timer + System.Math.Max(enemySpawnSpeed + Random.Range(spawnRandomness*-1, spawnRandomness), minSpawnSpeed);
+
+        return output;
+    }
+
+    private void spawnPulsar() {
+        if(spawnPulsars && LogicManagerScript.nebulaOn){
+            int randomIndex = Random.Range(0, pulsars.Length);
+            float leftestPoint = transform.position.x - horizontalOffset;
+            float rightestPoint = transform.position.x + horizontalOffset;
+            Instantiate(pulsars[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
+        }
+    }
+
+    private float getNextPulsarSpawnTime() {
+        float output = timer + (pulsarSpawnSpeed + Random.Range(pulsarSpawnRandomness*-1, pulsarSpawnRandomness));
 
         return output;
     }

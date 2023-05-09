@@ -37,10 +37,10 @@ public class Boss1 : MonoBehaviour
             if(health.currentHp.Equals(0)) {
                 float x = transform.position.x;
                 float y = transform.position.y;
+                EventManager.Boss1End();
                 Destroy(gameObject);
                 SpawnCoins(x, y);
                 SpawnExplosion(x, y);
-                EventManager.Boss1End();
             }
         }
     }

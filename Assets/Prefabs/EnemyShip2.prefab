@@ -241,6 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreValue: 1
   coinChance: 0.5
+  coinValue: 1
   coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
   explosion: {fileID: 4361271454986989480, guid: 11e180321d7cce944b2ce70f536836d8,
     type: 3}
@@ -273,6 +274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 12
   delay: 1
+  randomness: 0
   laser: {fileID: 4655763631912970988, guid: 900a7db036366f243b8afad60e685e68, type: 3}
   laserEnabled: 0
 --- !u!114 &6727434075174732756
@@ -295,13 +297,13 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 000000005f911874
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  m_ShapePathHash: 0
+  - {x: -0.41971302, y: -0.46825886, z: 0}
+  - {x: -0.4122448, y: 0.41037726, z: 0}
+  - {x: 0.3898387, y: 0.41224456, z: 0}
+  - {x: 0.38610458, y: -0.46639156, z: 0}
+  m_ShapePathHash: -1546599899
   m_Mesh: {fileID: 0}
-  m_InstanceId: -527894
+  m_InstanceId: 74370
   m_LocalBounds:
-    m_Center: {x: 0, y: 0, z: 0}
-    m_Extent: {x: 0.5, y: 0.5, z: 0}
+    m_Center: {x: -0.014937162, y: -0.02800715, z: 0}
+    m_Extent: {x: 0.40477586, y: 0.4402517, z: 0}
