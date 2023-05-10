@@ -30,11 +30,18 @@ public class Boss1BattleManager : MonoBehaviour
     }
 
     private void stopBattle() {
-        Debug.Log("Boss1BattleManager stopBattle");
-        asteroidSpawerScript.spawnAsteroids = true;
-        asteroidSpawerScript.spawnEnemies = true;
         LogicManagerScript.boss1Complete = true;
         LogicManagerScript.bossFight = false;
+        Invoke("showLevelTitle", 2);
+        Invoke("restartSpawning", 3);
     }
     
+    private void restartSpawning() {
+        asteroidSpawerScript.spawnAsteroids = true;
+        asteroidSpawerScript.spawnEnemies = true;
+    }
+
+    private void showLevelTitle() {
+        EventManager.Level2Start();
+    }
 }

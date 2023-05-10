@@ -15,3 +15,4 @@ MonoBehaviour:
   credits: 0
   purchasedUpgrades: []
   showProgress: 0
+  debug: 0

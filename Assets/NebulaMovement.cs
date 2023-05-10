@@ -27,7 +27,7 @@ public class NebulaMovement : MonoBehaviour
             if(!fadedIn) {
                 var color = transform.GetComponent<SpriteRenderer>().color;
                 if(color.a < alpha) {
-                    transform.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, color.a + (.01f * Time.deltaTime));
+                    transform.GetComponent<SpriteRenderer>().color = new Color(color.r, color.g, color.b, color.a + (.02f * Time.deltaTime));
                 } else {
                     fadedIn = true;
                 }

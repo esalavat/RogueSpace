@@ -6,6 +6,7 @@ using System.Linq;
 
 public class UIManagerScript : MonoBehaviour
 {
+    public GameObject canvas;
     public TMP_Text scoreText;
     public TMP_Text[] creditsTexts;
     public TMP_Text messageText;
@@ -14,6 +15,7 @@ public class UIManagerScript : MonoBehaviour
     public GameObject upgradeUIPrefab;
     public GameObject upgradeGroup;
     public GameObject shieldRegenBar;
+    public GameObject levelTitle;
     private Dictionary<Upgrade, GameObject> upgradeUIs = new Dictionary<Upgrade, GameObject>();
 
     public static UIManagerScript Instance { get; private set; }
@@ -48,6 +50,7 @@ public class UIManagerScript : MonoBehaviour
         EventManager.OnMessage += DisplayMessage;
         EventManager.OnLifeUpdated += UpdateShield;
         EventManager.OnShieldRegen += UpdateShieldRegen;
+        EventManager.OnLevel2Start += ShowLevelTitle;
     }
 
     private void OnDisable()
@@ -58,6 +61,7 @@ public class UIManagerScript : MonoBehaviour
         EventManager.OnMessage -= DisplayMessage;
         EventManager.OnLifeUpdated -= UpdateShield;
         EventManager.OnShieldRegen -= UpdateShieldRegen;
+        EventManager.OnLevel2Start -= ShowLevelTitle;
     }
 
     public void UpdateCredits(int credits) {
@@ -149,5 +153,10 @@ public class UIManagerScript : MonoBehaviour
 
     private GameObject GetUpgradeUI(Upgrade upgrade) {
         return upgradeUIs[upgrade];
+    }
+
+    private void ShowLevelTitle() {
+        var levelTitleInstance = Instantiate(levelTitle, canvas.transform);
+        Destroy(levelTitleInstance, 3);
     }
 }

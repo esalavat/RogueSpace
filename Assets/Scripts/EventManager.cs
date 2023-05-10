@@ -27,4 +27,7 @@ public static class EventManager {
 
     public static event Action OnBoss1End;
     public static void Boss1End() => OnBoss1End?.Invoke();
+
+    public static event Action OnLevel2Start;
+    public static void Level2Start() => OnLevel2Start?.Invoke();
 }
