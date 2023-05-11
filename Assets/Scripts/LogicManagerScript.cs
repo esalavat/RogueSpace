@@ -18,6 +18,7 @@ public class LogicManagerScript : MonoBehaviour
     public GameObject sun;
     public List<GameObject> lightRays;
     public GameObject levelProgressIndicator;
+    public GameObject nebula;
 
     private float sunIntensity = 0;
     private float timer = 0;
@@ -60,6 +61,7 @@ public class LogicManagerScript : MonoBehaviour
 
             if(!nebulaOn && timer > boss1Time + 1) {
                 nebulaOn = true;
+                nebula.SetActive(true);
             }
         }
     }
