@@ -99,9 +99,12 @@ public class AsteroidSpawerScript : MonoBehaviour
 
     private void spawnEnemy() {
         if(spawnEnemies) {
-            int enemiesLength = enemies.Length;
-            if(timer < 40) {
-                enemiesLength--;
+            int enemiesLength = 1;
+            if(timer > 40) {
+                enemiesLength++;
+            }
+            if(LogicManagerScript.nebulaOn) {
+                enemiesLength++;
             }
 
             bool enemiesShoot = false;
