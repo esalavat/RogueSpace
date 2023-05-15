@@ -26,6 +26,7 @@ public class ShipScript : MonoBehaviour
     private float shootTimer = 0;
     private bool isShieldRegenning = false;
     private bool doubleLaser = false;
+    private bool angledLasers = false;
 
     void Start()
     {    
@@ -49,6 +50,10 @@ public class ShipScript : MonoBehaviour
         if(GameStateManager.Instance.hasUpgrade(Upgrade.DoubleLaser)) {
             doubleLaser = true;
         }
+        if(GameStateManager.Instance.hasUpgrade(Upgrade.AngledLasers)) {
+            angledLasers = true;
+        }
+        
 
         minScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(0, 0, 0));
         maxScreenBounds = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
@@ -139,6 +144,14 @@ public class ShipScript : MonoBehaviour
             GameObject newLaser2 = Instantiate(laser, new Vector3(x2Pos, transform.position.y, 1), transform.rotation);
             newLaser2.GetComponent<Rigidbody2D>().velocity = Vector2.up * laserSpeed;
             Destroy(newLaser2, 2);
+        }
+        if(angledLasers) {
+            GameObject newLaser3 = Instantiate(laser, new Vector3(x1Pos, transform.position.y, 1), transform.rotation * Quaternion.Euler(0,0,35));
+            newLaser3.GetComponent<Rigidbody2D>().velocity = newLaser3.transform.up * laserSpeed;
+            Destroy(newLaser3, 2);
+            GameObject newLaser4 = Instantiate(laser, new Vector3(x2Pos, transform.position.y, 1), transform.rotation * Quaternion.Euler(0,0,-35));
+            newLaser4.GetComponent<Rigidbody2D>().velocity = newLaser4.transform.up * laserSpeed;
+            Destroy(newLaser4, 2);
         }
     }
 
