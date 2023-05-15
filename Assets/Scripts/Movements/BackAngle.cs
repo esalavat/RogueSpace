@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZigZagMove : MonoBehaviour
+public class BackAngle : MonoBehaviour
 {
     public float yMoveSpeed = 3f;
     public float zagTime = 2f;

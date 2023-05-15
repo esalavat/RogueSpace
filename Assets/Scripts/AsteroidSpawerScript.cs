@@ -104,11 +104,11 @@ public class AsteroidSpawerScript : MonoBehaviour
                 enemiesLength++;
             }
             if(LogicManagerScript.nebulaOn) {
-                enemiesLength++;
+                enemiesLength+=2;
             }
 
             bool enemiesShoot = false;
-            if(timer > 80) {
+            if(timer * (GameStateManager.Instance.gameState.debug ? 15 : 1) > 80) {
                 enemiesShoot = true;
             }
 
@@ -117,7 +117,7 @@ public class AsteroidSpawerScript : MonoBehaviour
             float rightestPoint = transform.position.x + horizontalOffset;
 
             GameObject newEnemy = Instantiate(enemies[randomIndex], new Vector3(Random.Range(leftestPoint, rightestPoint), transform.position.y, 0), transform.rotation);
-            newEnemy.GetComponent<EnemyLaser>().laserEnabled = enemiesShoot;
+            newEnemy.GetComponent<IEnemyWeapon>().WeaponEnabled = enemiesShoot;
             newEnemy.GetComponent<EnemyScript>().coinValue = coinValue;
         }
     }

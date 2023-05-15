@@ -8,6 +8,7 @@ public class Pulsar : MonoBehaviour
     public float variation = 1.5f;
     public float moveSpeed = .5f;
     public float flickerSpeed = .3f;
+    public float deadZoneY = -10f;
     public List<float[]> colors = new List<float[]> {
         new float[] {.84f, .015f, 1f, .35f, .55f},
         new float[] {.74f, .39f, .32f, .35f, .55f},
@@ -36,6 +37,10 @@ public class Pulsar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(transform.position.y < deadZoneY) {
+            Destroy(gameObject);
+        }
+
         if(flickerTimer<=0) {
             if(dim) {
                 pulsarLight.intensity += variation;

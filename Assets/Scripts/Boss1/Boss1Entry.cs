@@ -20,7 +20,7 @@ public class Boss1Entry : StateMachineBehaviour
         animator.transform.position = animator.transform.position + Vector3.down * speed * Time.deltaTime;
         if(timer > time) {
             animator.GetComponent<Boss1>().immune = false;
-            animator.GetComponent<EnemyLaser>().laserEnabled = true;
+            animator.GetComponent<IEnemyWeapon>().WeaponEnabled = true;
             animator.SetTrigger("DoAttack1");
         }
         timer += Time.deltaTime;

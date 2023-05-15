@@ -1542,9 +1542,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.0023419203
+    y: 0
     width: 1
-    height: 0.99604154
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -4836,6 +4836,7 @@ MonoBehaviour:
   - {fileID: 331745898272797011, guid: acb61ca9fc6d7a84d98bc91fd30f20c9, type: 3}
   - {fileID: 7640462319457295093, guid: 5b6d916f87390304db93554dee600f36, type: 3}
   - {fileID: 2162058325714225268, guid: 37e64c0f46577934b96f9ed7e14fb0fd, type: 3}
+  - {fileID: 4098892172831748721, guid: f45c1953007c05f4b8502919165a730f, type: 3}
   pulsars:
   - {fileID: 7850467334109745367, guid: 31b21fdb32607304da7b0586855f3800, type: 3}
   - {fileID: 4440493930606765182, guid: a755b3b5637420344905cf6f8fa6346f, type: 3}

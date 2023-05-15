@@ -123,9 +123,9 @@ GameObject:
   - component: {fileID: 7640462319457295095}
   - component: {fileID: 8198884431751655888}
   - component: {fileID: 5471167131685678706}
-  - component: {fileID: 2377928916166626052}
   - component: {fileID: 5430007043573635779}
   - component: {fileID: 6727434075174732756}
+  - component: {fileID: 2545778837945279380}
   m_Layer: 0
   m_Name: EnemyShip2
   m_TagString: asteroid
@@ -245,21 +245,6 @@ MonoBehaviour:
   coin: {fileID: 275871053336925231, guid: 06014147c1230ca4a9adbe4dba19c15c, type: 3}
   explosion: {fileID: 4361271454986989480, guid: 11e180321d7cce944b2ce70f536836d8,
     type: 3}
---- !u!114 &2377928916166626052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7640462319457295093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 903467b1805b5d742afcbcf79528739b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  yMoveSpeed: 3
-  zagTime: 2
-  deadZoneY: -10
 --- !u!114 &5430007043573635779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,8 +260,8 @@ MonoBehaviour:
   speed: 12
   delay: 1
   randomness: 0
+  spreadShot: 0
   laser: {fileID: 4655763631912970988, guid: 900a7db036366f243b8afad60e685e68, type: 3}
-  laserEnabled: 0
 --- !u!114 &6727434075174732756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +288,22 @@ MonoBehaviour:
   - {x: 0.38610458, y: -0.46639156, z: 0}
   m_ShapePathHash: -1546599899
   m_Mesh: {fileID: 0}
-  m_InstanceId: 74370
+  m_InstanceId: 66634
   m_LocalBounds:
     m_Center: {x: -0.014937162, y: -0.02800715, z: 0}
     m_Extent: {x: 0.40477586, y: 0.4402517, z: 0}
+--- !u!114 &2545778837945279380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7640462319457295093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdac3bfbef7bd504fa750c8e31d9ea7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yMoveSpeed: 3
+  zagTime: 2
+  deadZoneY: -10
