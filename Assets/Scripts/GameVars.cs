@@ -9,4 +9,5 @@ public class GameVars : ScriptableObject
     public List<Upgrade> purchasedUpgrades;
     public bool showProgress;
     public bool debug = false;
+    public bool boss1EverComplete = false;
 }

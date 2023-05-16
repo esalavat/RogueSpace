@@ -16,3 +16,4 @@ MonoBehaviour:
   purchasedUpgrades: []
   showProgress: 0
   debug: 0
+  boss1EverComplete: 0

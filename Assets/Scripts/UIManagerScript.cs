@@ -67,6 +67,7 @@ public class UIManagerScript : MonoBehaviour
     public void UpdateCredits(int credits) {
         UpdateCredits();
     }
+    
     public void UpdateCredits() {
         if(GameStateManager.Instance.gameState.credits > 0) {
             foreach(var creditsText in creditsTexts) {
